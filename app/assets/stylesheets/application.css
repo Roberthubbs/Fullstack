@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.login-signup {
+    display: flex; 
+    justify-content: flex-end;
+    padding: 8px 20px;
+    align-items: center;
+    background-color: #555;
+    border-bottom: 1px solid #ccc;
+}
+.login-signup > a{
+    color: antiquewhite;
+    text-decoration: none;
+    padding: 2px;
+}
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-title{
+    margin-left: 20px;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 40px;
+}
+
+.bottom-header{
+    background:rgb(240, 240, 240);
+    margin: 0 auto;
+}
+
+.login-form-container{
+    position: relative;
+    background: rgba(110, 110, 110, .75);
+    height: 845px;
+    margin-top: 115px;
+    width: 30%;
+    margin-left: 100px;
+}
+
+.login-input{
+    width: 80%;
+    display: flex;
+    align-content: center;
+    height: 30px;
+    border-radius: 14px;
+}
+
+.session-form-submit{
+    width: 70%;
+    height: 30px;
+    background-color: orange;
+    font-size: 20px;
+    border-radius: 14px;
+}
+
+.background-image-signup{
+    background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_743,q_50,w_1903/v1/clients/yorkcountysc/FISHING_781ccf0a-f06d-42fc-85f4-ec6b49d227e5.jpg")
+}
+
+.title-login{
+    font-size: 24px;
+}
+.link-change{
+    margin-top: 20px;
+    color: whitesmoke;
+}
+.link-change > a {
+    color: white;
+    text-emphasis: bold;
+}
+
+.login-label{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+.sign-background{
+    width: 100%;
+}
