@@ -10,9 +10,13 @@ class SessionForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGuestSubmit = this.handleGuestSubmit.bind(this);
     }
 
     
+    componentWillUnmount(){
+        this.props.resetErrors();
+    }
 
     update(field) {
         return e => this.setState({
@@ -22,21 +26,36 @@ class SessionForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
+        
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(() => this.props.history.push("/"));
+        
+    }
+    handleGuestSubmit(e){
+        e.preventDefault();
+        
+        this.props.loginDemo({ username: "DemoUser", password: "Password" }).then(() => this.props.history.push("/"));
     }
 
-    renderErrors(){
-        return(
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
+    renderErrors() {
+        
+        return (
+            <div>
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`} className="login-errors">
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )
+    
+
+
+
     }
+  
 
     decideText(){
         if (this.props.formType === 'login'){
@@ -47,14 +66,16 @@ class SessionForm extends React.Component {
     };
 
     render(){
+        
         return (
+           
             <div className="background-image-signup">
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-box">
                     <h2 className="title-login"></h2>
                     <br />
-                    {this.props.formType}  
-                    {this.renderErrors()}
+                    
+                    
                       <div className="login-form">
                         <br />
                         <label className="login-label">Username:
@@ -70,13 +91,16 @@ class SessionForm extends React.Component {
                             className="login-input"/>
                         </label>
                         <br />
-                        <input className="session-form-submit" type="submit" value={this.props.formType} />
-       
+                        <h2 className="impt-label">{this.renderErrors()}</h2>
+                        <input className="session-form-submit" type="submit" value={this.props.formType} />  
                         <h2 className="link-change">{this.decideText()}{this.props.navLink}</h2>
+                        <button className="session-form-submit" onClick={this.handleGuestSubmit} >Continue As Guest</button>
                       </div>
                 </form>
+                    
             </div>
             </div>
+           
         );
     }
 }

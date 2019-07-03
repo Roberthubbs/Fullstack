@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
 import { signup } from '../../actions/session_actions';
+import { resetErrors } from '../../actions/session_actions';
+
 const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
@@ -15,6 +17,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
+        resetErrors: () => dispatch(resetErrors())
     };
 };
 

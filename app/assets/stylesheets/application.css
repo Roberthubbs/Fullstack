@@ -13,6 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.username-greeting{
+    color: white;
+    font-size: 12px;
+}
+
+.logout-button-h{
+    padding: 3px;
+    background-color: lightgray;
+    border-radius: 3px;
+    color: blue;
+}
+ .greet-user{
+     display: flex; 
+    justify-content: flex-end;
+    padding: 8px 20px;
+    align-items: center;
+    background-color: #555;
+    border-bottom: 1px solid #ccc;
+ }
 .login-signup {
     display: flex; 
     justify-content: flex-end;
@@ -26,11 +45,25 @@
     text-decoration: none;
     padding: 2px;
 }
+
 .login-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.login-errors{
+    white-space: normal;
+    margin-bottom: 20px;
+    background-color:#b94a48;
+    color: white;
+    font-size: 12px;
+    margin-top: 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    display: inline-block;
+    padding: 3px;
 }
 
 .site-title{
@@ -43,14 +76,13 @@
 
 .bottom-header{
     background:rgb(240, 240, 240);
-    margin: 0 auto;
+    
 }
 
 .login-form-container{
     position: relative;
     background: rgba(110, 110, 110, .75);
     height: 845px;
-    margin-top: 115px;
     width: 30%;
     margin-left: 100px;
 }
@@ -72,6 +104,7 @@
 }
 
 .background-image-signup{
+    background-size: cover;
     background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_743,q_50,w_1903/v1/clients/yorkcountysc/FISHING_781ccf0a-f06d-42fc-85f4-ec6b49d227e5.jpg")
 }
 
@@ -104,4 +137,5 @@
 
 .sign-background{
     width: 100%;
+    
 }
