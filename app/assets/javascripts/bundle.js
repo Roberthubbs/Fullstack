@@ -173,12 +173,12 @@ var receiveAllProjects = function receiveAllProjects(projects) {
 var receiveProject = function receiveProject(project) {
   return {
     type: RECEIVE_PROJECT,
-    projects: projects
+    project: project
   };
 };
-var fetchProject = function fetchProject(project) {
+var fetchProject = function fetchProject(projectId) {
   return function (dispatch) {
-    return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProject"](project).then(function (project) {
+    return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchProject"](projectId).then(function (project) {
       return dispatch(receiveProject(project));
     });
   };
@@ -438,7 +438,7 @@ function (_React$Component) {
     key: "render",
     // handleClick(){
     //     const projId = this.props.project.id;
-    //     this.props.history.push(`projects/${projectId}`)
+    //     this.state.history.push(`projects/${projId}`)
     // }
     value: function render() {
       var _this$props$project = this.props.project,
@@ -529,17 +529,15 @@ function (_React$Component) {
   _createClass(ProjectShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProject(this.props.projectId);
+      this.props.fetchProject(this.props.match.params.projectId);
     }
   }, {
     key: "render",
     value: function render() {
       var project = this.props.project;
       if (!project) return null;
-      var description = project.description,
-          body = project.body,
-          materials = project.materials;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, materials, " "));
+      var description = project.description;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, description));
     }
   }]);
 
@@ -561,6 +559,8 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project_show */ "./frontend/components/projects/project_show.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_project_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_action */ "./frontend/actions/project_action.js");
+
 
 
 
@@ -573,19 +573,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchProject: function (_fetchProject) {
-      function fetchProject(_x) {
-        return _fetchProject.apply(this, arguments);
-      }
-
-      fetchProject.toString = function () {
-        return _fetchProject.toString();
-      };
-
-      return fetchProject;
-    }(function (projectId) {
-      return dispatch(fetchProject(projectId));
-    })
+    fetchProject: function fetchProject(projectId) {
+      return dispatch(Object(_actions_project_action__WEBPACK_IMPORTED_MODULE_2__["fetchProject"])(projectId));
+    }
   };
 };
 
@@ -721,7 +711,7 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        return _this3.props.history.push("/");
+        return _this3.props.history.push("/projects");
       });
     }
   }, {
@@ -734,16 +724,17 @@ function (_React$Component) {
         username: "DemoUser",
         password: "Password"
       }).then(function () {
-        return _this4.props.history.push("/");
+        return _this4.props.history.push("/projects");
       });
     }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-errors"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(i),
-          className: "login-errors"
+          key: "error-".concat(i)
         }, error);
       })));
     }
@@ -759,47 +750,85 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "background-image-signup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "login-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "title-login"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "login-label"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        id: "fill",
-        placeholder: "Username",
-        value: this.state.username,
-        onChange: this.update('username'),
-        className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "login-label"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        id: "fill",
-        placeholder: "Password",
-        value: this.state.password,
-        onChange: this.update('password'),
-        className: "password-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "impt-label"
-      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "session-form-submit",
-        type: "submit",
-        value: this.props.formType
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "link-change"
-      }, this.decideText(), this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "session-form-submit",
-        onClick: this.handleGuestSubmit
-      }, "Continue As Guest")))));
+      if (this.props.errors.length > 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "background-image-signup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit,
+          className: "login-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "title-login"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "login-label"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          placeholder: "   Username",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "login-input"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "login-label"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "password",
+          placeholder: "   Password",
+          value: this.state.password,
+          onChange: this.update('password'),
+          className: "password-input"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "impt-label"
+        }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "session-form-submit",
+          type: "submit",
+          value: this.props.formType
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "link-change"
+        }, this.decideText(), this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "session-form-submit",
+          onClick: this.handleGuestSubmit
+        }, "Continue As Guest")))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "background-image-signup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit,
+          className: "login-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "title-login"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "login-label"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          placeholder: "  Username",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "login-input"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "login-label"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "password",
+          placeholder: "   Password",
+          value: this.state.password,
+          onChange: this.update('password'),
+          className: "password-input"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "session-form-submit",
+          type: "submit",
+          value: this.props.formType
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "link-change"
+        }, this.decideText(), this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "session-form-submit",
+          onClick: this.handleGuestSubmit
+        }, "Continue As Guest")))));
+      }
     }
   }]);
 
@@ -1053,8 +1082,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_project_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/project_action */ "./frontend/actions/project_action.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1067,7 +1094,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, action.projects);
 
     case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, _defineProperty({}, action.project.id, action.project));
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, action.project);
 
     default:
       return state;

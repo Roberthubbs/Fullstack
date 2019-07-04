@@ -5,7 +5,7 @@ import SignUpFormContainer from './components/session_form/signup_form_container
 import ProjectIndexContainer from './components/projects/project_index_container';
 import { AuthRoute } from './util/route_util';
 import ProjectItemContainer from './components/projects/project_item_container';
-import ProjectShowContainer from './components/projects/project_show_container'
+import ProjectShowContainer from './components/projects/project_show_container';
 import {
     Route, 
     Redirect,

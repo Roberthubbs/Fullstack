@@ -9,7 +9,7 @@ class ProjectItem extends React.Component {
     
     // handleClick(){
     //     const projId = this.props.project.id;
-    //     this.props.history.push(`projects/${projectId}`)
+    //     this.state.history.push(`projects/${projId}`)
     // }
 
     render() {
@@ -22,7 +22,6 @@ class ProjectItem extends React.Component {
                 <Link to={`projects/${this.props.project.id}`}>
                     {description}
                 </Link>
-                
             </div>
         )
     };
