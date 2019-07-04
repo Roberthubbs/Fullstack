@@ -23,6 +23,7 @@
     background-color: lightgray;
     border-radius: 3px;
     color: blue;
+    margin-left: 5px;
 }
  .greet-user{
      display: flex; 
@@ -53,17 +54,20 @@
     align-items: center;
 }
 
-.login-errors{
+.impt-label{
     white-space: normal;
-    margin-bottom: 20px;
+    /* margin-bottom: 15px; */
     background-color:#b94a48;
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 10px;
     border-radius: 3px;
     font-weight: 700;
-    display: inline-block;
     padding: 3px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-title{
@@ -91,7 +95,7 @@
     width: 80%;
     display: flex;
     align-content: center;
-    height: 30px;
+    height: 40px;
     border-radius: 14px;
     
 }
@@ -105,7 +109,7 @@
     width: 80%;
     display: flex;
     align-content: center;
-    height: 30px;
+    height: 40px;
     border-radius: 14px;
     margin-top: 15px;
 }
@@ -135,10 +139,13 @@
 .link-change{
     margin-top: 20px;
     color: whitesmoke;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 .link-change > a {
     color: white;
     text-emphasis: bold;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
 }
 
 .login-label{

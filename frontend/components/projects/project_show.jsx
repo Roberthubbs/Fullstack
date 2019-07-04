@@ -5,20 +5,22 @@ import React from 'react';
 class ProjectShow extends React.Component {
     
     componentDidMount(){
-        this.props.fetchProject(this.props.projectId)
+        
+        this.props.fetchProject(this.props.match.params.projectId)
+        
     }
     
     render() {
         const project = this.props.project;
+        
         if (!project) return null;
-        const {description, body, materials} = project;
+        const { description } = project;
         
         return (
             <div>
                 
                 <h1>{description}</h1>
-                <h1>{body}</h1>
-                <h1>{materials} </h1>
+              
             </div>
         )
     }
