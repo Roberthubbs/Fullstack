@@ -4,6 +4,8 @@ import LogInFormContainer from './components/session_form/login_form_container';
 import SignUpFormContainer from './components/session_form/signup_form_container';
 import ProjectIndexContainer from './components/projects/project_index_container';
 import { AuthRoute } from './util/route_util';
+import ProjectItemContainer from './components/projects/project_item_container';
+import ProjectShowContainer from './components/projects/project_show_container'
 import {
     Route, 
     Redirect,
@@ -23,6 +25,8 @@ const App = () => (
         <Switch>
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+            <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+            <Route exact path="/projects" component={ProjectIndexContainer} />
         </Switch>
        
     </div>

@@ -11,7 +11,10 @@ const Hello = ({currentUser, logout}) => {
     const welcomeUser = () => (
         <nav className="greet-user">
             <h2 className="username-greeting">{currentUser.username}</h2>
-            <button className="logout-button-h" onClick={logout}>Sign Out</button>
+           
+                <button className="logout-button-h" onClick={logout}>Sign Out</button>
+            
+            
             
         </nav>
     );

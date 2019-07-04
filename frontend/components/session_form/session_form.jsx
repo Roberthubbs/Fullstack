@@ -33,7 +33,6 @@ class SessionForm extends React.Component {
     }
     handleGuestSubmit(e){
         e.preventDefault();
-        
         this.props.loginDemo({ username: "DemoUser", password: "Password" }).then(() => this.props.history.push("/"));
     }
 
@@ -78,17 +77,21 @@ class SessionForm extends React.Component {
                     
                       <div className="login-form">
                         <br />
-                        <label className="login-label">Username:
+                        <label className="login-label">
                             <input type="text"
+                            id="fill"
+                            placeholder="Username"
                             value={this.state.username}
                             onChange={this.update('username')}
                             className="login-input"/>
                         </label>
-                        <label className="login-label">Password:
+                        <label className="login-label">
                             <input type="password"
+                            id="fill"
+                            placeholder="Password"
                             value={this.state.password}
                             onChange={this.update('password')}
-                            className="login-input"/>
+                            className="password-input"/>
                         </label>
                         <br />
                         <h2 className="impt-label">{this.renderErrors()}</h2>

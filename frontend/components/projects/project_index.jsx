@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ProjectItem from './project_index_item';
 
 
 import { receiveAllProjects } from '../../actions/project_action';
@@ -14,15 +14,19 @@ export class ProjectIndex extends React.Component {
         this.props.receiveAllProjects()
     }
     
+    
     render() {
        
         const { projects } = this.props
         
         return (
             projects.map(project => (
-                <ul>
-                    {project.description}
-                </ul>
+                <div>
+                    <ProjectItem 
+                    key={project.id}
+                    project={project}
+                    />
+                </div>
                     
                 
             ))

@@ -93,14 +93,35 @@
     align-content: center;
     height: 30px;
     border-radius: 14px;
+    
+}
+.login-input:focus{
+    background-color: cornsilk;
+    border: 0px;
+    height: 35px;
+    width: 85%;
+}
+.password-input{
+    width: 80%;
+    display: flex;
+    align-content: center;
+    height: 30px;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+.password-input:focus{
+    background-color: cornsilk;
+    border: 0px;
+    height: 35px;
+    width: 85%;
 }
 
 .session-form-submit{
-    width: 70%;
+    width: 80%;
     height: 30px;
     background-color: orange;
     font-size: 20px;
-    border-radius: 14px;
+    border-radius: 9px;
 }
 
 .background-image-signup{
