@@ -536,8 +536,20 @@ function (_React$Component) {
     value: function render() {
       var project = this.props.project;
       if (!project) return null;
-      var description = project.description;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, description));
+      var description = project.description,
+          materials = project.materials,
+          body = project.body;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "project-title"
+      }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-materials"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mats"
+      }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-body"
+      }, body));
     }
   }]);
 

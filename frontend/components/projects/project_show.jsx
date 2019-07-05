@@ -14,13 +14,16 @@ class ProjectShow extends React.Component {
         const project = this.props.project;
         
         if (!project) return null;
-        const { description } = project;
+        const { description, materials, body } = project;
         
         return (
-            <div>
-                
-                <h1>{description}</h1>
-              
+            <div className="project-show-container">
+                <h1 className="project-title">{description}</h1>
+                <div className="project-materials">
+                    <h2 className="mats">What you'll need</h2>
+                    <h2>{materials}</h2>
+                </div>
+                <div className="project-body">{body}</div>
             </div>
         )
     }

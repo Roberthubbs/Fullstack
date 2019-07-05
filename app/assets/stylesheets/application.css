@@ -133,6 +133,10 @@
     background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_743,q_50,w_1903/v1/clients/yorkcountysc/FISHING_781ccf0a-f06d-42fc-85f4-ec6b49d227e5.jpg")
 }
 
+.background-image-index{
+    background-image: url("https://static1.squarespace.com/static/53196574e4b0fe51941624ba/55bb2cfde4b02c50d76c7965/5b343122562fa750e00534c0/1530148910305/SurfFishing.gif?format=1500w")
+}
+
 .title-login{
     font-size: 24px;
 }
@@ -166,4 +170,42 @@
 .sign-background{
     width: 100%;
     
+}
+
+.project-title{
+    color: #333;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-family: Nunito,helvetica,arial,sans-serif;
+}
+
+.project-materials{
+    font-size: 20px;
+    font-family: Nunito,helvetica,arial,sans-serif;
+    font-weight: 300;
+    color: #555;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.project-materials > .mats {
+    font-weight: 400;
+    font-size: 25px;
+    margin-bottom: 10px;
+
+}
+
+
+.project-body{
+    font-family: Nunito,helvetica,arial,sans-serif;
+    text-align: center;
+    display: flex;
+    font-weight: 200;
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: center;
 }
