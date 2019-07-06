@@ -9,6 +9,7 @@
 ActiveRecord::Base.transaction do 
     guestUser = User.create(username: "DemoUser", password: "Password")
     
+    
 
     Project.destroy_all
     makingLuresOneOOne = Project.create(description: "Making good all-purpose lures", body: "Jointed crankbaits (aka “broke-back crankbaits”) add a whole new dimension to lure fishing. If you take one of your favorite 1-piece crankbaits bodies, cut it in two and then rejoin it, you’ll be surprised at the difference.
@@ -30,5 +31,5 @@ Jointed crankbaits can be constructed with a single joint – 1 loop on the fron
 Single joints tend to be more floppy and give a more erratic, wider action. The tail section also tends to hang down into the water when they are at rest, which presents the rear hook nicely to the fish. They can usually be worked more slowly, too.
 A Double Hinged Jointed CrankbaitDouble joints restrict the movement of the tail section to just side to side and pretty much eliminate up and down movement. This helps with casting and stabilizes the lure so it can be worked a little faster. In my view it also looks more natural when the lure is swimming.
 The Wash-up On Jointed Crankbaits
-Like any style of lure, jointed crankbaits have their pros and cons. They have their fans and their haters too! To be honest, when I’m fishing this is not a style of lure I often search my lure selection for. But on their day, jointed crankbaits can definitely out-fish other styles. So if you’re having a quiet day on the water and want to give fish something different, give them a go!", materials: "twine, beads, fishingline, hooks", number_of_likes: 3, author_id: 12)
+Like any style of lure, jointed crankbaits have their pros and cons. They have their fans and their haters too! To be honest, when I’m fishing this is not a style of lure I often search my lure selection for. But on their day, jointed crankbaits can definitely out-fish other styles. So if you’re having a quiet day on the water and want to give fish something different, give them a go!", materials: "twine, beads, fishingline, hooks", number_of_likes: 3, author_id: 12, image_url: "https://designobserver.com/media/images/mondrian/38914-7_folk+art+fishing+lure_group1d-1_m.jpg")
 end

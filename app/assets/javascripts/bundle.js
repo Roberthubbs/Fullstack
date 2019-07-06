@@ -119,7 +119,10 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_tempHomePage_hello_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bottom-header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "fishablesIcon.png",
+    className: "logo-small"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "site-title"
   }, "fishables")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
@@ -135,7 +138,7 @@ var App = function App() {
     component: _components_projects_project_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
     exact: true,
-    path: "/projects",
+    path: "/",
     component: _components_projects_project_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   })));
 };
@@ -337,12 +340,41 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var projects = this.props.projects;
-      return projects.map(function (project) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "background-image-index",
+        src: "SurfFishing.gif"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "over-image"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "YOURS FOR THE FISHING")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "over-image-p"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fishables is a community for you to share and learn tricks for fishing.  Explore, Share, and make yourself a better angler today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-constants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "step-by-step"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "first-index-constant"
+      }, "Step-By-Step"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "index-con"
+      }, "We teach you how to make any and all things fishing.  From cold mountain streams to vast oceans we're there for you.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "made-by-you"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "second-index-constant"
+      }, "Made By You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "index-con"
+      }, "Not only does Fishables gives the ability to learn new skills.  You have skills of your own to share, and we've got the platform to do it.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "a-happy-place"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "third-index-constant"
+      }, "A Happy Place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "right-index-con"
+      }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), projects.map(function (project) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "project-index-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: project.id,
           project: project
         }));
-      });
+      }));
     }
   }]);
 
@@ -397,9 +429,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -417,7 +447,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -445,18 +474,22 @@ function (_React$Component) {
           description = _this$props$project.description,
           body = _this$props$project.body,
           materials = _this$props$project.materials;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      if (!this.props.project.photo) return null;
+      var imageUrl = this.props.project.photo.record.image_url;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-items"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "projects/".concat(this.props.project.id)
-      }, description));
+      }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: imageUrl
+      })));
     }
   }]);
 
   return ProjectItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectItem);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProjectItem));
 
 /***/ }),
 
@@ -925,11 +958,20 @@ var Hello = function Hello(_ref) {
   var loginOrSignUp = function loginOrSignUp() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "letf-nav-bar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "homeButton",
+      src: "homeButton.png"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "right-nav-bar"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login"
     }, "Sign In |"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
-    }, "Sign Up!"));
+    }, "Sign Up!")));
   };
 
   var welcomeUser = function welcomeUser() {
@@ -1373,7 +1415,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/"
+        to: "/projects"
       });
     }
   });

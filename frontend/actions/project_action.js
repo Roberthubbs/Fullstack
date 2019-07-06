@@ -6,7 +6,8 @@ export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
 
 export const receiveAllProjects = projects => {
     return { type: RECEIVE_ALL_PROJECTS,
-            projects }
+            projects 
+    }
 };
 export const receiveProject = project => ({
     type: RECEIVE_PROJECT,

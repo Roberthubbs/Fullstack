@@ -4,8 +4,15 @@ const Hello = ({currentUser, logout}) => {
 
     const loginOrSignUp = () => (
         <nav className="login-signup">
+            <div className="letf-nav-bar">
+                <Link to="/">
+                    <img className="homeButton"src="homeButton.png" />
+                </Link>
+            </div>
+            <div className="right-nav-bar">
             <Link to="/login">Sign In |</Link>
             <Link to="/signup">Sign Up!</Link>
+            </div>
         </nav>
     );
     const welcomeUser = () => (

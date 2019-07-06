@@ -35,13 +35,13 @@
  }
 .login-signup {
     display: flex; 
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 8px 20px;
     align-items: center;
     background-color: #555;
     border-bottom: 1px solid #ccc;
 }
-.login-signup > a{
+.login-signup > .right-nav-bar > a{
     color: antiquewhite;
     text-decoration: none;
     padding: 2px;
@@ -71,15 +71,17 @@
 }
 
 .site-title{
-    margin-left: 20px;
+    
     font-family: "myriad-pro",Helvetica,Arial,sans-serif;
     font-size: 22px;
     font-weight: 700;
     padding: 40px;
+    padding-left: 0;
 }
 
 .bottom-header{
     background:rgb(240, 240, 240);
+    display: flex;
     
 }
 
@@ -126,6 +128,7 @@
     background-color: orange;
     font-size: 20px;
     border-radius: 9px;
+    overflow: hidden;
 }
 
 .background-image-signup{
@@ -134,7 +137,10 @@
 }
 
 .background-image-index{
-    background-image: url("https://static1.squarespace.com/static/53196574e4b0fe51941624ba/55bb2cfde4b02c50d76c7965/5b343122562fa750e00534c0/1530148910305/SurfFishing.gif?format=1500w")
+    width: 100%;
+    height: 550px;
+    
+    /* position: absolute; */
 }
 
 .title-login{
@@ -208,4 +214,126 @@
     margin-left: 200px;
     margin-right: 200px;
     justify-content: center;
+}
+
+.index-constants{
+    display: flex;
+    
+    justify-content: space-between; 
+    width: 90%;
+    line-height: 20px;
+    height: 200px;
+    align-items: center;
+    margin-left: 100px;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+}
+
+.first-index-constant{
+    
+    /* flex: 1 1 0px; */
+    padding: 10px;
+    margin-bottom: 10px;
+    align-content: center;
+    display: inline-block;
+    font-size: 34px;
+     margin-left: 60px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.third-index-constant{
+    
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 34px;
+    margin-top: 22px;
+    margin-left: 60px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.second-index-constant{
+    /* margin-top: 22px; */
+    /* flex: 1 1 0px; */
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 34px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+     margin-left: 60px;
+}
+
+.index-con{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    display: block;
+    line-height: 1.4;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 3px 0 10px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    max-width: 400px;
+}
+.right-index-con{
+     margin-block-start: 1em;
+    margin-block-end: 1em;
+    display: block;
+    line-height: 1.4;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 3px 0 10px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    max-width: 400px;
+    margin-left: 20px;
+}
+
+.project-index-item{
+    border-radius: 3px;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 1px solid rgba(0,0,0,0.15);
+    width: 240px;
+    min-width: 240px;
+    transition: all 0.2s ease-in-out;
+    text-emphasis: none;
+}
+
+.logo-small{
+    width: 50px;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.homeButton{
+    margin-top: 3px;
+    height: 15px;
+    width: 15px;
+    align-content: left;
+}
+
+.over-image{
+    left: 10%;
+    position: absolute;
+    top: 250px;
+    color: rgb(128, 126, 127);
+    font-family: "myriad-pro-condensed",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 60px;
+}
+
+.over-image-p{
+    left: 10%;
+    position: absolute;
+    top: 300px;
+    color: rgb(128, 126, 127);
+    font-family: "myriad-pro-condensed",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 450px;
+    line-height: 25px;
+    padding-bottom: 15px;
+    border-bottom: solid  rgb(128, 126, 127);
 }

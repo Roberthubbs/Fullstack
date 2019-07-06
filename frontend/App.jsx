@@ -18,6 +18,7 @@ const App = () => (
         <HelloContainer />
         
         <div className="bottom-header">
+            <img src="fishablesIcon.png" className="logo-small" />
             <h1 className="site-title">fishables</h1>
         </div>
 
@@ -26,7 +27,7 @@ const App = () => (
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
-            <Route exact path="/projects" component={ProjectIndexContainer} />
+            <Route exact path="/" component={ProjectIndexContainer} />
         </Switch>
        
     </div>
