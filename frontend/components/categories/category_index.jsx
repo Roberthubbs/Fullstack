@@ -8,7 +8,8 @@ class CategoryIndex extends React.Component {
     };
     
     render() {
-        const categories = this.props;
+        const { categories }   = this.props;
+        debugger;
         return (
         categories.map(category => (
             <div>

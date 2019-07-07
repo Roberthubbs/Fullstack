@@ -71,18 +71,22 @@
 }
 
 .site-title{
-    
+    vertical-align: center;
+    float: right;
     font-family: "myriad-pro",Helvetica,Arial,sans-serif;
     font-size: 22px;
     font-weight: 700;
-    padding: 40px;
+    /* padding: 40px; */
     padding-left: 0;
+    margin-top: 40px;
 }
 
 .bottom-header{
     background:rgb(240, 240, 240);
     display: flex;
-    
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
 }
 
 .login-form-container{
@@ -224,7 +228,8 @@
     line-height: 20px;
     height: 200px;
     align-items: center;
-    margin-left: 100px;
+    margin-left: auto;
+    margin-right: auto;
     flex-direction: row;
     border-bottom: 1px solid lightgray;
 }
@@ -344,6 +349,8 @@
     height: 60px;
     margin-top: 20px;
     margin-left: 10px;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 .logo-larger{
     width: 70px;
@@ -392,3 +399,114 @@
     padding-bottom: 15px;
     border-bottom: solid  rgb(128, 126, 127);
 }
+
+
+.project-form-box{
+   
+    
+    /* flex-direction: row; */
+    /* line-height: normal; */
+    /* max-width: 60%; */
+    width: 700px;
+    margin: auto;
+    border: 1px solid #b94a48;
+    padding: 10px;
+    
+    border-radius: 14px;
+    background: rgba(110, 110, 110, .75);
+}
+.new-proj-desc{
+    width: 300px;
+    height: 30px;
+    border-radius: 8px;
+}
+.proj-materials-input{
+    width: 300px;
+    height: 60px;
+    border-radius: 8px;
+}
+.proj-input{
+    width: 400px;
+    min-height: 300px;
+    border-radius: 8px;
+}
+.project-image-box{
+    width: 200px;
+    height: 40px;
+}
+.project-labels{
+     margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+     font-size: 20px;
+     text-align: center;
+}
+.new-project-inputs{
+     /* width: 800px;
+    height: 900px; */
+     display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}
+
+.project-form-submit{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    background-color: #b94a48;
+    border-radius: 8px;
+}
+
+.project-form-submit:hover{
+    transform: scale(1.2);
+    cursor:pointer;
+}
+
+.new-project-title{
+    margin: auto;
+    font-size: 28px;
+    text-decoration: #b94a48;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    text-align: center;
+}
+
+.new-project-form{
+    
+     background-size: cover;
+    background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_743,q_50,w_1903/v1/clients/yorkcountysc/FISHING_781ccf0a-f06d-42fc-85f4-ec6b49d227e5.jpg")
+}
+
+.cat-link{
+    border: .2px solid lightgray;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    font-size: 17px;
+    border-radius: 3px;
+    font-weight: 500px;
+    background-color: orange;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    flex-direction: flex-end;
+    margin-right: 10px;
+}
+.create-link{
+    border: .2px solid lightgray;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    font-size: 17px;
+    border-radius: 3px;
+    font-weight: 500px;
+    background-color: orange;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    flex-direction: flex-end;
+    margin-right:10px;
+}
+

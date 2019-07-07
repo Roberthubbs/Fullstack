@@ -12,10 +12,12 @@ export const fetchProjects = () => (
     })
 );
 
-export const createProject = project => (
+export const createProject = formData => (
     $.ajax({
         method: 'POST',
         url: '/api/projects',
-        data: { project }
+        data: { formData},
+        contentType: false,
+        processData: false
     })
 );

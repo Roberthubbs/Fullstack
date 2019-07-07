@@ -47,7 +47,7 @@ ActiveRecord::Base.transaction do
    
     
 Category.destroy_all
-category1 = Category.create(name: "Lures", description: "Projects Involving Lures for Every Type of Fishing")
+category1 = Category.create!(name: "Lures", description: "Projects Involving Lures for Every Type of Fishing")
     
 
     Project.destroy_all
