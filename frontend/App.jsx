@@ -6,6 +6,7 @@ import ProjectIndexContainer from './components/projects/project_index_container
 import { AuthRoute } from './util/route_util';
 import ProjectItemContainer from './components/projects/project_item_container';
 import ProjectShowContainer from './components/projects/project_show_container';
+import CategoryIndexContainer from './components/categories/category_index_container'
 import {
     Route, 
     Redirect,
@@ -20,6 +21,7 @@ const App = () => (
         <div className="bottom-header">
             <img src="fishablesIcon.png" className="logo-small" />
             <h1 className="site-title">fishables</h1>
+            <Link to="/categories">Categories</Link>
         </div>
 
        
@@ -30,6 +32,9 @@ const App = () => (
             <Route exact path="/" component={ProjectIndexContainer} />
         </Switch>
        
+       <footer className="perm-bottom-border">
+            <img src="fishablesIcon.png" className="logo-larger" />
+       </footer>
     </div>
 );
 

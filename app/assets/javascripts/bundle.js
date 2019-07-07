@@ -105,7 +105,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_projects_project_item_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/projects/project_item_container */ "./frontend/components/projects/project_item_container.jsx");
 /* harmony import */ var _components_projects_project_item_container__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_projects_project_item_container__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_projects_project_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/projects/project_show_container */ "./frontend/components/projects/project_show_container.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_categories_category_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/categories/category_index_container */ "./frontend/components/categories/category_index_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -124,7 +126,9 @@ var App = function App() {
     className: "logo-small"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "site-title"
-  }, "fishables")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, "fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
+    to: "/categories"
+  }, "Categories")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -132,18 +136,71 @@ var App = function App() {
     exact: true,
     path: "/signup",
     component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
     exact: true,
     path: "/projects/:projectId",
     component: _components_projects_project_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
     exact: true,
     path: "/",
     component: _components_projects_project_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "perm-bottom-border"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "fishablesIcon.png",
+    className: "logo-larger"
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/actions/category_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/category_actions.js ***!
+  \**********************************************/
+/*! exports provided: RECEIVE_ALL_CATEGORIES, RECEIVE_CATEGORY, receiveAllCategories, receiveCategory, fetchCategory, fetchCategories */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_CATEGORIES", function() { return RECEIVE_ALL_CATEGORIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CATEGORY", function() { return RECEIVE_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllCategories", function() { return receiveAllCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCategory", function() { return receiveCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCategory", function() { return fetchCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCategories", function() { return fetchCategories; });
+/* harmony import */ var _util_category_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/category_api_util */ "./frontend/util/category_api_util.js");
+
+var RECEIVE_ALL_CATEGORIES = "RECEIVE_ALL_CATEGORIES";
+var RECEIVE_CATEGORY = "RECEIVE_CATEGORY";
+var receiveAllCategories = function receiveAllCategories(categories) {
+  return {
+    type: RECEIVE_ALL_CATEGORIES,
+    categories: categories
+  };
+};
+var receiveCategory = function receiveCategory(category) {
+  return {
+    RECEIVE_CATEGORY: RECEIVE_CATEGORY,
+    category: category
+  };
+};
+var fetchCategory = function fetchCategory(id) {
+  return function (dispatch) {
+    return _util_category_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCategory"](id).then(function (category) {
+      return dispatch(receiveCategory(category));
+    });
+  };
+};
+var fetchCategories = function fetchCategories() {
+  return function (dispatch) {
+    return _util_category_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCategories"]().then(function (categories) {
+      return dispatch(receiveAllCategories(categories));
+    });
+  };
+};
 
 /***/ }),
 
@@ -281,6 +338,104 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/components/categories/category_index.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/categories/category_index.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var CategoryIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CategoryIndex, _React$Component);
+
+  function CategoryIndex() {
+    _classCallCheck(this, CategoryIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(CategoryIndex).apply(this, arguments));
+  }
+
+  _createClass(CategoryIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCategories();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var categories = this.props;
+      return categories.map(function (category) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, category.description));
+      });
+    }
+  }]);
+
+  return CategoryIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CategoryIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/categories/category_index_container.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/categories/category_index_container.jsx ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/category_actions */ "./frontend/actions/category_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _category_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category_index */ "./frontend/components/categories/category_index.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    categories: Object.values(state.entities.categories)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchCategories: function fetchCategories() {
+      return dispatch(Object(_actions_category_actions__WEBPACK_IMPORTED_MODULE_0__["fetchCategories"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_category_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/projects/project_index.jsx":
 /*!********************************************************!*\
   !*** ./frontend/components/projects/project_index.jsx ***!
@@ -367,14 +522,16 @@ function (_React$Component) {
         className: "third-index-constant"
       }, "A Happy Place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "right-index-con"
-      }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), projects.map(function (project) {
+      }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-grid"
+      }, projects.map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "project-index-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: project.id,
           project: project
         }));
-      }));
+      })));
     }
   }]);
 
@@ -465,6 +622,24 @@ function (_React$Component) {
 
   _createClass(ProjectItem, [{
     key: "render",
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         imageUrl: '',
+    //         imageFile: null
+    //     }
+    // }
+    // extractPhoto(e){
+    //     const reader = new FileReader();
+    //     const photo = this.props.project.imageUrl;
+    //     debugger;
+    //     reader.onloadend = () =>
+    //         this.setState({ imageUrl: reader.result, imageFile: photo});
+    //     if(photo) {
+    //         reader.readAsDataURL(imageUrl);
+    //     } else {
+    //     this.setState({ imageUrl: "", imageFile: null });
+    // }
     // handleClick(){
     //     const projId = this.props.project.id;
     //     this.state.history.push(`projects/${projId}`)
@@ -474,15 +649,19 @@ function (_React$Component) {
           description = _this$props$project.description,
           body = _this$props$project.body,
           materials = _this$props$project.materials;
-      if (!this.props.project.photo) return null;
-      var imageUrl = this.props.project.photo.record.image_url;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "item-link",
         to: "projects/".concat(this.props.project.id)
-      }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: imageUrl
-      })));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "lead-project-photo",
+        src: this.props.project.photo
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "link-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "project-link"
+      }, description)))));
     }
   }]);
 
@@ -1043,7 +1222,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./root */ "./frontend/root.jsx");
-/* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/project_api_util */ "./frontend/util/project_api_util.js");
+/* harmony import */ var _util_category_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/category_api_util */ "./frontend/util/category_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -1071,13 +1250,49 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.store = store;
-  window.fetchProjects = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__["fetchProjects"];
+  window.fetchCategories = _util_category_api_util__WEBPACK_IMPORTED_MODULE_4__["fetchCategories"];
   window.getState = store.getState;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
 });
+
+/***/ }),
+
+/***/ "./frontend/reducers/category_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/category_reducer.js ***!
+  \***********************************************/
+/*! exports provided: categoryReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categoryReducer", function() { return categoryReducer; });
+/* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/category_actions */ "./frontend/actions/category_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var categoryReducer = function categoryReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_category_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_CATEGORIES"]:
+      return action.categories;
+
+    case _actions_category_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CATEGORY"]:
+      return Object(lodash_merge__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, _defineProperty({}, action.category.id, action.category));
+
+    default:
+      return state;
+  }
+};
 
 /***/ }),
 
@@ -1093,12 +1308,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _projects_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projects_reducer */ "./frontend/reducers/projects_reducer.jsx");
+/* harmony import */ var _category_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./category_reducer */ "./frontend/reducers/category_reducer.js");
+
 
 
 
 var entities = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  projects: _projects_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  projects: _projects_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  categories: _category_reducer__WEBPACK_IMPORTED_MODULE_3__["categoryReducer"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entities);
 
@@ -1348,6 +1566,32 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/category_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/category_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchCategories, fetchCategory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCategories", function() { return fetchCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCategory", function() { return fetchCategory; });
+var fetchCategories = function fetchCategories() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/categories'
+  });
+};
+var fetchCategory = function fetchCategory(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/categories/".concat(id)
+  });
+};
 
 /***/ }),
 

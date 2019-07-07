@@ -287,7 +287,24 @@
     margin-left: 20px;
 }
 
-.project-index-item{
+.item-grid{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 200px;
+    margin-right: 200px;
+    grid-gap: 50px;
+}
+
+.lead-project-photo{
+    width: 240px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-items{
     border-radius: 3px;
     overflow: hidden;
     margin-right: 15px;
@@ -295,7 +312,31 @@
     width: 240px;
     min-width: 240px;
     transition: all 0.2s ease-in-out;
-    text-emphasis: none;
+    height: 300px;
+   
+}
+
+.project-link{
+    
+    line-height: 20px;
+    font-size: 14px;
+    margin: 0 auto;
+    
+    margin-top: 40px;
+}
+.project-items:hover{
+    transform: scale(1.2)
+}
+.item-link{
+    text-decoration: none;
+    color:rgb(100, 100, 100);
+    font-weight: 500;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.link-div{
+   display: flex;
+   text-emphasis: none;
 }
 
 .logo-small{
@@ -303,6 +344,20 @@
     height: 60px;
     margin-top: 20px;
     margin-left: 10px;
+}
+.logo-larger{
+    width: 70px;
+    height: 85px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.perm-bottom-border{
+    height: 200px;
+    width: 100%;
+    background-color: #555;
+    /* position: absolute; */
+    bottom: 0;
+    margin-top: 200px;
 }
 
 .homeButton{

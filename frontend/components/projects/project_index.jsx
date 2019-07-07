@@ -56,6 +56,7 @@ export class ProjectIndex extends React.Component {
                 </div>
                
             </div>
+            <div className="item-grid">
             {projects.map(project => (
                 
                 <div className="project-index-item">
@@ -68,7 +69,7 @@ export class ProjectIndex extends React.Component {
                     
                 
             ))}
-                
+                </div>
            </div>
         );
     };
