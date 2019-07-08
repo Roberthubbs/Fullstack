@@ -71,6 +71,9 @@ Single joints tend to be more floppy and give a more erratic, wider action. The 
 A Double Hinged Jointed CrankbaitDouble joints restrict the movement of the tail section to just side to side and pretty much eliminate up and down movement. This helps with casting and stabilizes the lure so it can be worked a little faster. In my view it also looks more natural when the lure is swimming.
 The Wash-up On Jointed Crankbaits
 Like any style of lure, jointed crankbaits have their pros and cons. They have their fans and their haters too! To be honest, when I’m fishing this is not a style of lure I often search my lure selection for. But on their day, jointed crankbaits can definitely out-fish other styles. So if you’re having a quiet day on the water and want to give fish something different, give them a go!", materials: "twine, beads, fishingline, hooks", number_of_likes: 32, author_id: guestUser10.id, category_id: category1.id)
+file1 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/alabamalure.jpg')
+makingLuresOneOOne.photo.attach(io: file1, filename: 'alabamalure.jpg')
+
 
 makingLures2 = Project.create!(description: "Tying Your Own Bucktail Dressed Trebles", body: "Step 1: Insert the treble hook (here we are using 4/0) into the
 fly tying vise. Slowly wrap the thread starting at the hook eye
@@ -170,6 +173,8 @@ powder paint.
 Step 6: (Optional) Tying bucktail using
 tying vise and bobbin.", materials: "Lead, melting equipment (melting pot and ladle) and Do-It mold. Lead melts at 620°F so you require a reliable source of heat.", number_of_likes: 3, author_id: guestUser30.id, category_id: category1.id)
 
+file7 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures-hardbaits.jpg')
+makingLures5.photo.attach(io: file7, filename: 'lures-hardbaits.jpg')
 
 makingLures6 = Project.create!(description: "Casting Your Own", body: "Step 1: Place hooks or other components in mold
 cavity.
@@ -186,14 +191,14 @@ tying vise and bobbin.", materials: "Lead, melting equipment (melting pot and la
 file6 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures-hardbaits.jpg')
 makingLures6.photo.attach(io: file6, filename: 'lures-hardbaits.jpg')
 
-makingLures7 = Project.create!(description: "Fly Fishing Lures for Perch", body: "The “Tightline Rig”  is the newest thing on the scene, this set-up has three hooks tied in a staggered series on the line, the theory is you will feel the slightest bite and increase your catch rate.  Unfortunately it has some fatal flaws, but can be resolved when you make your own for less than 50 cents each.  First flaw is that the top hook gets no action at all, its just too far out of the strike zone.  The 2nd flaw is that the hooks are just too close together.  When you hook up with a fish, you will get another hook into the meat along its backside at some point. The solution is easy, tie on your snap at the bottom, within the first two inches run the line (typically 20 or 25 lb test) twice through a 5 mm bead and slide on your #6 gold perch hook, then run another 5 mm bead down the line and loop the line through once.  
+makingLures8 = Project.create!(description: "Fly Fishing Lures for Perch", body: "The “Tightline Rig”  is the newest thing on the scene, this set-up has three hooks tied in a staggered series on the line, the theory is you will feel the slightest bite and increase your catch rate.  Unfortunately it has some fatal flaws, but can be resolved when you make your own for less than 50 cents each.  First flaw is that the top hook gets no action at all, its just too far out of the strike zone.  The 2nd flaw is that the hooks are just too close together.  When you hook up with a fish, you will get another hook into the meat along its backside at some point. The solution is easy, tie on your snap at the bottom, within the first two inches run the line (typically 20 or 25 lb test) twice through a 5 mm bead and slide on your #6 gold perch hook, then run another 5 mm bead down the line and loop the line through once.  
 Repeat this process 8 to 10 inches above the first hook, and then 20 inches or so above that, tie on a crane swivel.  If you are already using a snap and swivel on your main line, you can skip the crane swivel, and just tie a double loop knot to connect too.  Now, to get your third hook on the line, down at the snap, attach an eight inch snell when you put your weight on.  You will catch more fish simply because you have now three hooks in the perch’s natural strike zone….easy peasy!", materials: "Three hooks, twine", number_of_likes: 3, author_id: guestUser37.id, category_id: category1.id)
 
-file7 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/perchriglure.jpg')
-makingLures7.photo.attach(io: file7, filename: 'perchriglure.jpg')
+file8 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/perchriglure.jpg')
+makingLures8.photo.attach(io: file8, filename: 'perchriglure.jpg')
 
 
-makingLures8 = Project.create!(description: "Which Lure Is For You?", body: "Jigs
+makingLures9 = Project.create!(description: "Which Lure Is For You?", body: "Jigs
 
 jig lure
 
@@ -272,8 +277,8 @@ Presentation
 Dry flies are intended to float on the surface of the water, to this end they are dressed with some kind of floatant to aid in their buoyancy. Wet flies, like nymphs and streamers are designed to be fished below the surface of the water. Fly fishing is a difficult but rewarding area of the fishing universe.
 Now that you know the basic lures and how they are used, you should have an easier time starting your own collection. Buy only a few at a time, and take the time to learn to fish them. If you know anyone that fishes the same water you do, ask them what kind of lures they like to use and what they recommend.", materials: "N/A", number_of_likes: 3, author_id: guestUser15.id, category_id: category1.id)
 
-file8 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/help_decide_lure.jpg')
-makingLures8.photo.attach(io: file8, filename: 'help_decide_lure.jpg')
+file9 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/help_decide_lure.jpg')
+makingLures9.photo.attach(io: file9, filename: 'help_decide_lure.jpg')
 
 
 end

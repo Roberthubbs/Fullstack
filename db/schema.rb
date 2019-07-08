@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_182333) do
+ActiveRecord::Schema.define(version: 2019_07_08_215852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 2019_07_06_182333) do
     t.integer "category_id"
     t.index ["author_id"], name: "index_projects_on_author_id"
     t.index ["description"], name: "index_projects_on_description", unique: true
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "project_key"
   end
 
   create_table "users", force: :cascade do |t|

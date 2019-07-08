@@ -9,15 +9,21 @@ class NewProjectForm extends React.Component {
             decription: "",
             materials: "",
             body: "",
-            photoFile: undefined
+            photoFile: undefined,
+            clicked: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.clickedX = this.clickedX.bind(this)
     };
 
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
         });
+    }
+
+    clickedX(){
+        this.setState({clicked: true})
     }
 
     handleSubmit(e){
@@ -34,6 +40,7 @@ class NewProjectForm extends React.Component {
     }
     
     render() {
+        if (this.state.clicked === false) {
         return (
             <div className="new-project-form">
                 <form onSubmit={this.handleSubmit} className="project-form-box">
@@ -48,6 +55,11 @@ class NewProjectForm extends React.Component {
                             className="new-proj-desc"
                             />
                         </label>
+                        <div className="form-clear">
+                            <img className="small-clear-icon"src="./fishablesIcon.png" />
+                            <p className="small-clear-text">Welcome to fishables project creator! Just follow the form and you'll have a new project in no time</p>
+                            <button className="close-clear-button" onClick={this.clickedX}>X</button>
+                        </div>
                         <br /> 
                         <label className="project-labels">Project Materials
                         <br />
@@ -78,7 +90,53 @@ class NewProjectForm extends React.Component {
                     </div>
                 </form>
             </div>
-        )
+        )} else {
+            return (
+                <div className="new-project-form">
+                    <form onSubmit={this.handleSubmit} className="project-form-box">
+                        <h2 className="new-project-title">Create New Project</h2>
+                        <div className="new-project-inputs">
+                            <label className="project-labels">Description:
+                        <br />
+                                <input type="text"
+                                    placeholder="Brief Description of Your Project Here"
+                                    value={this.state.description}
+                                    onChange={this.update("description")}
+                                    className="new-proj-desc"
+                                />
+                            </label>
+                            <br />
+                            <label className="project-labels">Project Materials
+                        <br />
+                                <textarea className="proj-materials-input"
+                                    placeholder="Materials Here"
+                                    value={this.state.materials}
+                                    onChange={this.update("materials")}
+                                >
+                                </textarea>
+                            </label>
+                            <label className="project-labels">Project Steps
+                        <br />
+                                <textarea className="proj-input"
+                                    placeholder="Project Steps Here"
+                                    value={this.state.body}
+                                    onChange={this.update("body")}
+                                >
+                                </textarea>
+                            </label>
+                            <label className="project-labels">Photo
+                        <br />
+                                <input type="file"
+                                    value={this.state.photoFile}
+                                    onChange={this.update("photoFile")}
+                                    className="project-image-box" />
+                            </label>
+                            <input className="project-form-submit" type="submit" value="Create New Project!" />
+                        </div>
+                    </form>
+                </div>
+            )
+        }
     }
 }
 

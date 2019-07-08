@@ -8,6 +8,7 @@ import ProjectItemContainer from './components/projects/project_item_container';
 import ProjectShowContainer from './components/projects/project_show_container';
 import CategoryIndexContainer from './components/categories/category_index_container';
 import NewProjectContainer from './components/projects/new_project_container';
+import CategoryShowContainer from './components/categories/category_show_container'
 import {
     Route, 
     Redirect,
@@ -36,6 +37,7 @@ const App = () => (
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+            <Route exact path="/categories/:categoryId" component={CategoryShowContainer} />
             <Route exact path="/" component={ProjectIndexContainer} />
             <Route exact path="/project/create" component={NewProjectContainer} />
             <Route exact path="/categories" component={CategoryIndexContainer} />

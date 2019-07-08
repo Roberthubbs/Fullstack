@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class CategoryIndex extends React.Component {
     
@@ -9,12 +10,15 @@ class CategoryIndex extends React.Component {
     
     render() {
         const { categories }   = this.props;
-        debugger;
+        
         return (
         categories.map(category => (
-            <div>
-                <h2>{category.name}</h2>
-                <h4>{category.description}</h4>
+            <div className="category-index-item-list">
+            <Link className="category-index-list"to={`categories/${category.id}`} >
+                <h2 className="category-title">{category.name}</h2>
+                <h4 className="category-description">{category.description}</h4>
+                
+            </Link>
             </div>
         ))
             

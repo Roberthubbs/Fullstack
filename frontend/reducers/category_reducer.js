@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_CATEGORIES, RECEIVE_CATEGORY} from '../actions/category_actions';
 
-import { merge } from 'lodash/merge';
+import merge from 'lodash/merge';
 
 const categoriesReducer =(state={}, action) =>{
     Object.freeze(state);
@@ -12,7 +12,11 @@ const categoriesReducer =(state={}, action) =>{
             return action.categories
             
         case RECEIVE_CATEGORY: 
-            return merge({}, state, { [action.category.id]: action.category });
+            // let newState = action.category
+            // let newProjects = ({[action.projects]: action.projects})
+            debugger;
+            // return merge({}, newState, newProjects);
+            return merge({}, action.payload.category)
         default: 
             return state;
     }

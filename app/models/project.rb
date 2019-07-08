@@ -27,6 +27,9 @@ class Project < ApplicationRecord
         foreign_key: :category_id,
         class_name: :Category
 
+    has_many :steps,
+        foreign_key: :project_key,
+        class_name: :Step
     # def photo_url
     #     if self.photo.attached?
     #         Rails.application.routes.url_helpers.rails_blob_path(self.photo, only_path: true)

@@ -10,13 +10,19 @@ export const receiveAllCategories = categories => ({
 
 
 
-export const receiveCategory = category => ({
-    RECEIVE_CATEGORY,
-    category
+// export const receiveCategory = ({category, projects}) => ({
+//     type: RECEIVE_CATEGORY,
+//     category: category,
+//     projects: projects
+// });
+export const receiveCategory = (payload) => ({
+    type: RECEIVE_CATEGORY,
+    payload
 });
 
-export const fetchCategory = id => dispatch =>(
-    CategoryAPIUtil.fetchCategory(id).then(category => dispatch(receiveCategory(category)))
+
+export const fetchCategory = categoryId => dispatch =>(
+    CategoryAPIUtil.fetchCategory(categoryId).then(category => dispatch(receiveCategory(category)))
 );
 
 export const fetchCategories = () => dispatch => (
