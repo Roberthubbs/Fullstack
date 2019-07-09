@@ -102,7 +102,9 @@
     display: flex;
     align-content: center;
     height: 40px;
-    border-radius: 14px;
+    border-radius: 6px;
+    border: none;
+    border: 2px solid rgba(110, 110, 110, 0);
     
 }
 .login-input:focus{
@@ -116,11 +118,14 @@
     display: flex;
     align-content: center;
     height: 40px;
-    border-radius: 14px;
+    border-radius: 6px;
     margin-top: 15px;
+    border: none;
+    border: 2px solid rgba(110, 110, 110, 0);
 }
 .password-input:focus{
     /* background-color: cornsilk; */
+    border: 2px solid lightblue;
     outline: none;
 }
 
@@ -135,6 +140,7 @@
 }
 
 .background-image-signup{
+    background-position: center;
     background-size: cover;
     background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_743,q_50,w_1903/v1/clients/yorkcountysc/FISHING_781ccf0a-f06d-42fc-85f4-ec6b49d227e5.jpg")
 }
@@ -154,6 +160,7 @@
     color: whitesmoke;
     font-size: 14px;
     margin-bottom: 5px;
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
 }
 .link-change > a {
     color: white;
@@ -211,12 +218,10 @@
 
 .project-body{
     font-family: Nunito,helvetica,arial,sans-serif;
-    text-align: center;
-    display: flex;
-    font-weight: 200;
-    margin-left: 200px;
-    margin-right: 200px;
-    justify-content: center;
+    /* align-items: center; */
+    display: block;
+    width: 90%;
+    list-style: none;
 }
 
 .index-constants{
@@ -296,8 +301,10 @@
     display: grid;
     grid-template-columns: auto auto auto;
     margin-left: 200px;
-    margin-right: 200px;
+    margin-right: auto;
     grid-gap: 50px;
+    margin-bottom: 100px;
+   
 }
 
 .lead-project-photo{
@@ -363,7 +370,7 @@
     background-color: #555;
     /* position: absolute; */
     bottom: 0;
-    margin-top: 200px;
+    /* margin-top: 200px; */
 }
 
 .homeButton{
@@ -600,4 +607,30 @@
     width: 400px;
     font-family: "myriad-pro",Helvetica,Arial,sans-serif;
 }
+.project-show-container{
+    display: block;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    /* flex-direction: row; */
+    min-height: 900px;
+}
+.step-div{
+    width: 100%;
+    margin: auto;
+    
+}
+.step-body{
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 450;
+}
 
+.step-title{
+    font-family: "myriad-pro",Helvetica,Arial,sans-serif;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 550;
+}

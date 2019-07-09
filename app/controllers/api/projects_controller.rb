@@ -21,6 +21,6 @@ class Api::ProjectsController < ApplicationController
     end  
 
     def project_parmams 
-        params.require(:project).permit(:description, :body, :materials, :photo, :category_id)
+        params.require(:project).permit(:description, :materials, :photo, :category_id)
     end
 end

@@ -10,9 +10,8 @@ class SessionForm extends React.Component {
             password: '',
             
         };
-        
+        this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleGuestSubmit = this.handleGuestSubmit.bind(this);
     }
 
     
@@ -32,12 +31,12 @@ class SessionForm extends React.Component {
         e.preventDefault();
         
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => this.props.history.push("/projects"));
+        this.props.processForm(user).then(() => this.props.history.push("/"));
         
     }
     handleGuestSubmit(e){
         e.preventDefault();
-        this.props.loginDemo({ username: "DemoUser", password: "Password" }).then(() => this.props.history.push("/projects"));
+        this.props.loginDemo({ username: "DemoUser", password: "Password" }).then(() => this.props.history.push("/"));
     }
 
   
@@ -62,7 +61,7 @@ class SessionForm extends React.Component {
     
 
     decideText(){
-        if (this.props.formType === 'login'){
+        if (this.props.formType === 'Login'){
             return "New to fishables? "
         } else {
             return "Returning User? "

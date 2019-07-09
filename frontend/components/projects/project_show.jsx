@@ -23,7 +23,14 @@ class ProjectShow extends React.Component {
                     <h2 className="mats">What you'll need</h2>
                     <h2>{materials}</h2>
                 </div>
-                <div className="project-body">{body}</div>
+                <ul className="project-body">
+                    {project.steps.map(step => (
+                    <li className="steps-div">
+                        <h1 className="step-title">{step.title}</h1>
+                        <p className="step-body">{step.body}</p>
+                    </li>
+                        ))}
+                </ul>
             </div>
         )
     }

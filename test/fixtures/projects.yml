@@ -4,7 +4,6 @@
 #
 #  id              :bigint           not null, primary key
 #  description     :string           not null
-#  body            :text             not null
 #  materials       :text             not null
 #  number_of_likes :integer          not null
 #  author_id       :integer          not null

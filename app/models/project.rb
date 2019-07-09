@@ -4,7 +4,6 @@
 #
 #  id              :bigint           not null, primary key
 #  description     :string           not null
-#  body            :text             not null
 #  materials       :text             not null
 #  number_of_likes :integer          not null
 #  author_id       :integer          not null
@@ -15,7 +14,7 @@
 
 class Project < ApplicationRecord
 
-    validates :description, :body, :author_id, :number_of_likes, presence: true
+    validates :description, :author_id, :number_of_likes, presence: true
     
     has_one_attached :photo
 
@@ -28,7 +27,7 @@ class Project < ApplicationRecord
         class_name: :Category
 
     has_many :steps,
-        foreign_key: :project_key,
+        foreign_key: :project_id,
         class_name: :Step
     # def photo_url
     #     if self.photo.attached?

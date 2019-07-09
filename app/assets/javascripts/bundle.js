@@ -1158,9 +1158,17 @@ function (_React$Component) {
         className: "project-materials"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mats"
-      }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "project-body"
-      }, body));
+      }, project.steps.map(function (step) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "steps-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "step-title"
+        }, step.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "step-body"
+        }, step.body));
+      })));
     }
   }]);
 
@@ -1307,8 +1315,8 @@ function (_React$Component) {
       username: '',
       password: ''
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleGuestSubmit = _this.handleGuestSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1334,7 +1342,7 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        return _this3.props.history.push("/projects");
+        return _this3.props.history.push("/");
       });
     }
   }, {
@@ -1347,7 +1355,7 @@ function (_React$Component) {
         username: "DemoUser",
         password: "Password"
       }).then(function () {
-        return _this4.props.history.push("/projects");
+        return _this4.props.history.push("/");
       });
     }
   }, {
@@ -1364,7 +1372,7 @@ function (_React$Component) {
   }, {
     key: "decideText",
     value: function decideText() {
-      if (this.props.formType === 'login') {
+      if (this.props.formType === 'Login') {
         return "New to fishables? ";
       } else {
         return "Returning User? ";
@@ -1489,7 +1497,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
   var errors = _ref.errors;
   return {
     errors: errors.session,
-    formType: 'signup',
+    formType: 'Signup',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       to: "/login"
     }, "Login")
