@@ -1,14 +1,19 @@
 import { connect } from 'react-redux';
 import NewProjectForm from './new_project_form';
-import { receiveProject } from '../../actions/project_action';
+import { createProject } from '../../actions/project_action';
 
-const mapStateToProps =  state  => ({
-    project: state.entities.project,
-    formType: 'Create New Project'
-});
+const mapStateToProps = state => ({
+    project : {
+        description: "",
+        materials: ""
+    }
+})
+
+
+
 
 const mapDispatchToProps = dispatch => ({
-    createNewProject: (formData) => dispatch(receiveProject(formData))
+    createProject: project => dispatch(createProject(project))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm)
+export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm);

@@ -4,11 +4,12 @@ import LogInFormContainer from './components/session_form/login_form_container';
 import SignUpFormContainer from './components/session_form/signup_form_container';
 import ProjectIndexContainer from './components/projects/project_index_container';
 import { AuthRoute } from './util/route_util';
-import ProjectItemContainer from './components/projects/project_item_container';
+// import ProjectItemContainer from './components/projects/project_item_container';
 import ProjectShowContainer from './components/projects/project_show_container';
 import CategoryIndexContainer from './components/categories/category_index_container';
 import NewProjectContainer from './components/projects/new_project_container';
-import CategoryShowContainer from './components/categories/category_show_container'
+import CategoryShowContainer from './components/categories/category_show_container';
+import EditProjectContainer from './components/projects/edit_project_container';
 import {
     Route, 
     Redirect,
@@ -41,6 +42,8 @@ const App = () => (
             <Route exact path="/" component={ProjectIndexContainer} />
             <Route exact path="/project/create" component={NewProjectContainer} />
             <Route exact path="/categories" component={CategoryIndexContainer} />
+            <Route exact path="/projects/:projectId/edit" component={EditProjectContainer} />
+        
         </Switch>
        
        <footer className="perm-bottom-border">

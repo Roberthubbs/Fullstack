@@ -13,6 +13,7 @@ export class ProjectIndex extends React.Component {
     // }
 
     componentDidMount(){
+    
         this.props.receiveAllProjects()
     }
    

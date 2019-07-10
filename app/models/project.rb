@@ -14,7 +14,7 @@
 
 class Project < ApplicationRecord
 
-    validates :description, :author_id, :number_of_likes, presence: true
+    validates :description, presence: true
     
     has_one_attached :photo
 
@@ -24,7 +24,8 @@ class Project < ApplicationRecord
 
     belongs_to :category,
         foreign_key: :category_id,
-        class_name: :Category
+        class_name: :Category,
+        optional: :true
 
     has_many :steps,
         foreign_key: :project_id,

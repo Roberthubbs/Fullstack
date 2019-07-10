@@ -3,33 +3,6 @@ import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 class ProjectItem extends React.Component {
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //         imageUrl: '',
-    //         imageFile: null
-    //     }
-    // }
-    // extractPhoto(e){
-    //     const reader = new FileReader();
-    //     const photo = this.props.project.imageUrl;
-    //     debugger;
-    //     reader.onloadend = () =>
-    //         this.setState({ imageUrl: reader.result, imageFile: photo});
-
-    //     if(photo) {
-    //         reader.readAsDataURL(imageUrl);
-    //     } else {
-    //     this.setState({ imageUrl: "", imageFile: null });
-    // }
-
-
-    
-    // handleClick(){
-    //     const projId = this.props.project.id;
-    //     this.state.history.push(`projects/${projId}`)
-    // }
-    
    
     render() {
         

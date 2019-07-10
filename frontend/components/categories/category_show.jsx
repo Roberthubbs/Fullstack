@@ -9,7 +9,7 @@ class CategoryShow extends React.Component {
     }
     
     render() {
-        debugger;
+      
         const category  = this.props.category;
         const projects = this.props.projects;
 

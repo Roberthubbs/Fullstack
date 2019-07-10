@@ -17,10 +17,16 @@ const Hello = ({currentUser, logout}) => {
     );
     const welcomeUser = () => (
         <nav className="greet-user">
+            <div className="letf-nav-bar">
+                <Link to="/">
+                    <img className="homeButton" src="homeButton.png" />
+                </Link>
+            </div>
+            <div className="right-nav-bar">
             <h2 className="username-greeting">{currentUser.username}</h2>
            
                 <button className="logout-button-h" onClick={logout}>Sign Out</button>
-            
+            </div>
             
             
         </nav>
