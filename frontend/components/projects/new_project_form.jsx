@@ -46,11 +46,13 @@ class NewProjectForm extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <h1>Please Sign Up or Login as a Guest to continue</h1>
-                    <Link to="/login">
-                        Sign up/ Guest portal
-                    </Link>
+                <div className="sign-in-to-continue">
+                     <div className="direct-to-sign-in">  
+                        <h1 className="please-sign-in">Please Sign Up or Login as a Guest to continue</h1>
+                        <Link className="sign-in-portal"to="/login">
+                            Sign up/ Guest portal
+                        </Link>
+                    </div> 
                 </div>
             )
         }

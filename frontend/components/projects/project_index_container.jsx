@@ -3,7 +3,7 @@ import ProjectIndex from './project_index';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../../actions/category_actions'
 const mapStateToProps = (state) => {
-   
+   debugger;
     return {
     
         categories: Object.values(state.entities.categories),

@@ -5,7 +5,9 @@ class LoadingProjectForm extends React.Component {
         super(props)
         
         // this.state.project = this.props.projects[0];
-       
+        this.state = {
+            render: false
+        }
         
     }
 
@@ -13,19 +15,26 @@ class LoadingProjectForm extends React.Component {
 
     componentDidMount(){
         
-        this.props.fetchProjects()
+        this.props.fetchProjects();
+        setTimeout(function () { 
+            this.setState({ render: true }) 
+        }.bind(this), 2000)
     }
     render() {
         if (!this.props.project){
             return null
+        } 
+        if (this.state.render === false){
+            return(
+                <div className="loading-spinner">
+                    <img className="spinner" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+                </div>
+            )
         }
         return ( 
             <div className="loading-page">
                <div className="loading-title-div">
                 <h1 className="loading-title">Project is Loaded, click to continue</h1> 
-                </div> 
-                <br />
-                <div className="loading-div">
                     <Link to={`/projects/${this.props.project.id}/edit`} className="loading-link">
                     Continue to project
                     </Link>

@@ -1024,15 +1024,27 @@ function (_React$Component) {
   _inherits(LoadingProjectForm, _React$Component);
 
   function LoadingProjectForm(props) {
+    var _this;
+
     _classCallCheck(this, LoadingProjectForm);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LoadingProjectForm).call(this, props)); // this.state.project = this.props.projects[0];
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadingProjectForm).call(this, props)); // this.state.project = this.props.projects[0];
+
+    _this.state = {
+      render: false
+    };
+    return _this;
   }
 
   _createClass(LoadingProjectForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProjects();
+      setTimeout(function () {
+        this.setState({
+          render: true
+        });
+      }.bind(this), 2000);
     }
   }, {
     key: "render",
@@ -1041,15 +1053,22 @@ function (_React$Component) {
         return null;
       }
 
+      if (this.state.render === false) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loading-spinner"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "spinner",
+          src: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+        }));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loading-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loading-title-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "loading-title"
-      }, "Project is Loaded, click to continue")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loading-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Project is Loaded, click to continue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/projects/".concat(this.props.project.id, "/edit"),
         className: "loading-link"
       }, "Continue to project")));
@@ -1194,9 +1213,16 @@ function (_React$Component) {
           className: "new-proj-button"
         })));
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Please Sign Up or Login as a Guest to continue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "sign-in-to-continue"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "direct-to-sign-in"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "please-sign-in"
+        }, "Please Sign Up or Login as a Guest to continue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "sign-in-portal",
           to: "/login"
-        }, "Sign up/ Guest portal"));
+        }, "Sign up/ Guest portal")));
       }
     }
   }]);
@@ -1222,7 +1248,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _project_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_index_item */ "./frontend/components/projects/project_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _actions_project_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/project_action */ "./frontend/actions/project_action.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1240,7 +1265,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1398,6 +1422,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
+  debugger;
   return {
     categories: Object.values(state.entities.categories),
     projects: Object.values(state.entities.projects)
