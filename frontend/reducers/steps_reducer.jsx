@@ -8,7 +8,8 @@ const stepsReducer = (state = {}, action) => {
         case RECEIVE_PROJECT: 
             return merge({},state, action.payload.steps);
         case RECEIVE_STEP: 
-            return merge({},state, action.step);
+            
+            return merge({}, state, { [action.step.id]: action.step});
         default: 
             return state;
     }

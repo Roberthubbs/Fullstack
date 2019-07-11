@@ -22,7 +22,7 @@ class CategoryShow extends React.Component {
             {projects.map(project => (
               
                 <div className="project-items">
-                    <Link className="item-link" to={`projects/${project.id}`}>
+                    <Link className="item-link" to={`/projects/${project.id}`}>
                         <img className="lead-project-photo" src={project.photo} />
                         <div className="link-div">
                             <h6 className="project-link">{project.description}</h6>

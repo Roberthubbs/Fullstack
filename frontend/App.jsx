@@ -10,6 +10,8 @@ import CategoryIndexContainer from './components/categories/category_index_conta
 import NewProjectContainer from './components/projects/new_project_container';
 import CategoryShowContainer from './components/categories/category_show_container';
 import EditProjectContainer from './components/projects/edit_project_container';
+import LoadingProjectContainer from './components/projects/loading_proj_container';
+import StepFormContainer from './components/steps/create_step_container'
 import {
     Route, 
     Redirect,
@@ -17,6 +19,7 @@ import {
     Link,
     HashRouter
 } from 'react-router-dom';
+import LoadingProjectForm from './components/projects/loading_proj_form';
 
 const App = () => (
     <div>
@@ -38,17 +41,20 @@ const App = () => (
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+            <Route exact path="categories/projects/:projectId" component={ProjectShowContainer} />
             <Route exact path="/categories/:categoryId" component={CategoryShowContainer} />
             <Route exact path="/" component={ProjectIndexContainer} />
             <Route exact path="/project/create" component={NewProjectContainer} />
             <Route exact path="/categories" component={CategoryIndexContainer} />
-            <Route exact path="/projects/:projectId/edit" component={EditProjectContainer} />
-        
+            <Route exact path="/loading" component={LoadingProjectContainer} />
+            <Route path="/projects/:projectId/edit" component={EditProjectContainer} />
+            <Route path="/projects/:projectId/steps" component={StepFormContainer} />
         </Switch>
-       
-       <footer className="perm-bottom-border">
+        <div className="perm-bottom-border">
+       <footer >
             <img src="fishablesIcon.png" className="logo-larger" />
        </footer>
+        </div> 
     </div>
 );
 

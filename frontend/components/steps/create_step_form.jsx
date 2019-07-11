@@ -3,18 +3,26 @@ import { withRouter } from 'react-router-dom';
 class CreateStepForm extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            title: '',
-            body: ''
+       
+        if (!this.state){
+            this.state = {}
         }
+        
+        this.state.projectId = this.props.projectId
+        
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
-    handleSubmit(){
+    handleSubmit(e){
+       
         e.preventDefault();
-        debugger;
-        this.props.createStep(projectId).then(() => this.props.history.push(`projects/${this.props.projectId}/edit`))
+        
+        this.props.createStep(this.state).then(() => this.props.history.push(`/projects/${this.props.projectId}`))
+    }
+
+    componentDidMount(){
+        this.props.fetchProject(this.props.match.params.projectId)
     }
 
     update(field) {
@@ -28,6 +36,7 @@ class CreateStepForm extends React.Component {
         
         return (
             <div>
+
                 <form onSubmit={this.handleSubmit}>
                     <label className="step-title">
                         <input type="text"

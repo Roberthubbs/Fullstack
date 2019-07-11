@@ -5,10 +5,15 @@ class Api::StepsController < ApplicationController
         @step.project_id = params[:project_id]
     end
 
+    
     def create 
-        @step = Step.new(step_params)   
-        if !@step.save       
-            render json: @step.errors.full_messages 
+        
+        @step = Step.new(step_params)
+        @step.project_id = params[:project_id]   
+        if @step.save!     
+            render "api/steps/show"
+        else         
+            render json: @step.errors.full_messages
         end    
     end  
     

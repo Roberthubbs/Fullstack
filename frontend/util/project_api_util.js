@@ -12,11 +12,12 @@ export const fetchProjects = () => (
     })
 );
 
-export const createProject = project => (
+export const createProject = (payload) => (
     $.ajax({
         method: 'POST',
         url: '/api/projects',
-        data: { project },
+        data: { project: payload }
+        
         
     })
 );
@@ -30,13 +31,14 @@ export const createProject = project => (
 //         processData: false
 //     })
 // )
-export const updateProject = (project) => (
-    $.ajax({
-        method: "GET",
-        url: `/api/projects/${project.id}/edit`,
-        data: { project },
-        // contentType: false,
-        // processData: false
+export const updateProject = (formData) => {
+   
+    return $.ajax({
+        method: "PATCH",
+        url: `/api/projects/${formData.get("project[id]")}`,
+        data:  formData ,
+        contentType: false,
+        processData: false
     })
-)
+}
 

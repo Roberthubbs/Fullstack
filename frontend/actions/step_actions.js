@@ -7,6 +7,6 @@ export const receiveStep = step => ({
     type: RECEIVE_STEP,
     step
 })
-export const createStep = projectId => dispatch => (
-    StepAPIUtil.createStep(projectId).then(step => receiveStep(step))
+export const createStep = (step) => dispatch => (
+    StepAPIUtil.createStep(step).then(step => dispatch(receiveStep(step)))
 );

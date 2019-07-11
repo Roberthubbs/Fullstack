@@ -6,7 +6,8 @@ const mapStateToProps = state => ({
     project : {
         description: "",
         materials: ""
-    }
+    },
+    currentUser: state.session.id
 })
 
 

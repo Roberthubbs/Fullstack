@@ -10,7 +10,7 @@ end
 
 json.projects @category.projects.each do |project|
         
-        json.extract! project, :id, :description, :materials, :body
+        json.extract! project, :id, :description, :materials, :steps
     if project.photo.attached? 
         json.photo url_for(project.photo)
     end

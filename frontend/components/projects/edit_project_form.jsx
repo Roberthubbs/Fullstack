@@ -5,68 +5,90 @@ import CreateStepForm from '../steps/create_step_container';
 class EditProjectForm extends React.Component {
     constructor(props){
         super(props)
-        this.state = this.props.project;
-        this.state.clicked = false;
-        this.handleStepSubmit = this.handleStepSubmit.bind(this)
+       
+        this.state = this.props.project || {};
+        this.state.id = this.props.projectId || {}
+        this.state.photo = undefined;
+        this.state.photoFileName = "";
+        // this.handleStepSubmit = this.handleStepSubmit.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickedX = this.clickedX.bind(this);
         this.appendProject = this.appendProject.bind(this);
-        
+
+        this.state.clicked = false;
     };
 
+    componentDidMount(){
+    
+        this.props.fetchProject(this.props.match.params.projectId)
+        
+    }
+   
+
     update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
-        });
+
+        return e => {
+            if (field === 'photo'){
+                const reader = new FileReader();
+                const file = e.currentTarget.files[0];
+                reader.onloadend = () => {
+                    // console.log(file)
+                    // console.log(reader.result)
+                    this.setState({photo: file, photoFileName: file.name})
+                }
+
+                if (file){
+                    reader.readAsDataURL(file)
+                } else {
+
+                }
+            } else {
+                this.setState({
+                    [field]: e.currentTarget.value
+                 })
+            }
+        };
     }
 
     clickedX(){
         this.setState({clicked: true})
     }
 
-    handleStepSubmit(){
-        const myFormData = this.appendProject();
-        e.preventDefault();
-        myFormData.append('project[steps]', this.state.steps)
-    }
+    // handleStepSubmit(){
+    //     const myFormData = this.appendProject();
+    //     e.preventDefault();
+    //     myFormData.append('project[steps]', this.state.steps)
+    // }
     appendProject(){
         const { description, materials, photo }= this.state;
         const formDataNew = new FormData();
         formDataNew.append('project[description]', this.state.description)
         formDataNew.append('project[materials]', this.state.materials)
-        formDataNew.append('project[photo]', this.state.photo)
+        if (this.state.photo) {formDataNew.append('project[photo]', this.state.photo)}
+        if (this.state.photo) { formDataNew.append('project[filename]', this.state.photoFileName)}
         // formDataNew.append('project[steps]', this.state.steps)
+        
         formDataNew.append("project[id]", this.state.id);
         return formDataNew;
     }
 
     handleSubmit(e){
-        
+       
         const myFormData = this.appendProject();
         e.preventDefault();
         // const project = Object.assign({}, this.state)
         // if (this.props.authorId){
-        return this.props.updateProject(this.state).then(() => this.props.history.push(`/`))
+            
+        return this.props.updateProject(myFormData).then(() => this.props.history.push(`/projects/${this.state.id}/steps`))
         // }
         // this.props.updateProject(thi).then(() => this.props.history.push("/"))
     }
     
     render() {
         if (this.state.clicked === false) {
+       
         return (
             <div className="new-project-form">
-                {/* <form onSubmit={this.handleStepSubmit}>
-                    <label className="project-labels">Add Step
-                        <br />
-                        {/* <textarea className="proj-input"
-                            placeholder="Project Steps Here"
-                            value={this.state.steps}
-                            onChange={this.update("steps")}
-                            >
-                            </textarea> */}
-                        {/* <CreateStepForm /> */}
-                    {/* </label> */}
-                {/* </form> */} 
                 <form onSubmit={this.handleSubmit} className="project-form-box">
                     <h2 className="new-project-title">Create New Project</h2>
                     <div className="new-project-inputs">
@@ -98,11 +120,11 @@ class EditProjectForm extends React.Component {
                         <label className="project-labels">Photo
                         <br />
                             <input type="file"
-                                value={this.state.photo}
-                                onChange={this.update("photoFile")}
+                                // value={this.state.photoFileName}
+                                onChange={this.update("photo")}
                                 className="project-image-box" />
                         </label>
-                        <input className="project-form-submit" type="submit" value="Create New Project!" />
+                        <input className="project-form-submit" type="submit" value="Continue to add Steps!" />
                     </div>
                 </form>
             </div>
@@ -133,25 +155,14 @@ class EditProjectForm extends React.Component {
                             </label>
                             <label className="project-labels">Add Step
                             <br />
-                                {/* <textarea className="proj-input"
-                            placeholder="Project Steps Here"
-                            value={this.state.steps}
-                            onChange={this.update("steps")}
-                            >
-                            </textarea> */}
-                                <CreateStepForm />
                             </label>
-                            {/* <select className="category-select">
-                                <option onSelect={this.setState({categoryId: Lures.id})}>Lures</option> 
-                            </select>  */}
                             <label className="project-labels">Photo
                                 <br />
                                 <input type="file"
-                                    value={this.state.photoFile}
-                                    onChange={this.update("photoFile")}
+                                    onChange={this.update("photo")}
                                     className="project-image-box" />
                             </label>
-                            <input className="project-form-submit" type="submit" value="Create New Project!" />
+                            <input className="project-form-submit" type="submit" value="Continue to add Steps!" />
                         </div>
                     </form>
                 </div>

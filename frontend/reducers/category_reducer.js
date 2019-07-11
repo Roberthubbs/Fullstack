@@ -14,7 +14,7 @@ const categoriesReducer =(state={}, action) =>{
         case RECEIVE_CATEGORY: 
             // let newState = action.category
             // let newProjects = ({[action.projects]: action.projects})
-            debugger;
+           
             // return merge({}, newState, newProjects);
             return merge({}, action.payload.category)
         default: 

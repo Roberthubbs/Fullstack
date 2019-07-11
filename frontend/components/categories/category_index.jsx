@@ -9,19 +9,21 @@ class CategoryIndex extends React.Component {
     };
     
     render() {
+        // debugger;
         const { categories }   = this.props;
         
         return (
-        categories.map(category => (
-            <div className="category-index-item-list">
-            <Link className="category-index-list"to={`categories/${category.id}`} >
-                <h2 className="category-title">{category.name}</h2>
-                <h4 className="category-description">{category.description}</h4>
-                
-            </Link>
-            </div>
-        ))
-            
+        <div className="category-index-item-list"> 
+            {categories.map(category => (
+                <div className="category-index-item">
+                <Link className="category-index-list"to={`categories/${category.id}`} >
+                    <h2 className="category-title">{category.name}</h2>
+                    <h4 className="category-description">{category.description}</h4>
+                    
+                </Link>
+                </div>
+            ))}
+        </div>    
         )
     }
 }

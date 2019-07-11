@@ -14,7 +14,8 @@ validates :title, :body, presence: true
 
 belongs_to :project,
     foreign_key: :project_id,
-    class_name: :Project
+    class_name: :Project,
+    optional: :true
 
 
 end 

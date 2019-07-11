@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectItem from './project_index_item';
-
+import { Link } from 'react-router-dom';
 
 import { receiveAllProjects } from '../../actions/project_action';
 
@@ -14,15 +14,50 @@ export class ProjectIndex extends React.Component {
 
     componentDidMount(){
     
-        this.props.receiveAllProjects()
+        this.props.receiveAllProjects();
+        this.props.receiveAllCategories();
     }
    
     
+    selectFromLures(){
+        if (!this.props.projects) return null;
+       const lureArr = [];
+       const categories  = this.props.categories || {};
+        const projects  = this.props.projects || {};
+       let i = 0;
+       while (lureArr.length < 5 && this.props.categories){
+           
+            if (projects[i].category_id === categories[0].id){
+                lureArr.push(projects[i])
+            }
+            i++;
+       };
+       return lureArr
+    }
+    
+    selectFromPoles(){
+        if (!this.props.projects) return null;
+       
+       const poleArr = [];
+       const categories  = this.props.categories || {};
+        const projects  = this.props.projects || {};
+       let i = 0;
+       while (poleArr.length < 5 && this.props.categories){
+           
+            if (projects[i].category_id === categories[1].id){
+                poleArr.push(projects[i])
+            }
+            i++;
+       };
+       return poleArr
+    }
     
     render() {
-        
-        const { projects } = this.props
-        
+       
+        if (this.props.projects.length === 0) return null;
+        if (this.props.categories.length === 0) return null;
+        const lures = this.selectFromLures();
+        const poles = this.selectFromPoles();
         return (
             <div>
                 <div>
@@ -57,7 +92,7 @@ export class ProjectIndex extends React.Component {
                 </div>
                
             </div>
-            <div className="item-grid">
+            {/* <div className="item-grid">
             {projects.map(project => (
                 
                 <div className="project-index-item">
@@ -70,6 +105,45 @@ export class ProjectIndex extends React.Component {
                     
                 
             ))}
+                </div>
+           </div> */}
+            <div className="item-grid">
+            <div className="category-comp">
+            <h2 className="featured-title">Todays Featured Fishables</h2>
+            <div className="category-row">
+                {/* <h2 className="index-category-title">Lures:</h2> */}
+            <Link to={`/categories/${this.props.categories[0].id}`} className="index-category-title">Lures:</Link>
+                <br />
+                {lures.map(lure => (
+                    
+                    <div className="project-index-item">
+                        <ProjectItem 
+                        key={lure.id}
+                        project={lure}
+                        />
+                    </div>
+                
+                        
+                    
+                ))}
+            </div>
+            <div className="category-row">
+                <h2 className="index-category-title">Poles:</h2>
+                    <br />
+                        {poles.map(pole => (
+
+                            <div className="project-index-item">
+                                <ProjectItem
+                                    key={pole.id}
+                                    project={pole}
+                                />
+                            </div>
+
+
+
+                        ))}
+                </div>
+                </div>
                 </div>
            </div>
         );

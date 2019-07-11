@@ -62,52 +62,46 @@ ActiveRecord::Base.transaction do
 Category.destroy_all
 category1 = Category.create!(name: "Lures", description: "Projects Involving Lures for Every Type of Fishing")
     
-
+category2 = Category.create!(name: "Rods", description: "Projects Involving Building or Understanding Rods")
 #####################################################################################
 
-
-############################### STEPS ##########################################
-
-#####################################################################################
-
-#####################################################################################
 
 
 ############################### PROJECTS ##########################################
 
-#####################################################################################
+###############################  LURES   ##########################################
 
 Project.destroy_all
 makingLuresOneOOne = Project.create!(description: "Making good all-purpose lures", materials: "Twine, string, joints, ballbearings, treble hooks", number_of_likes: 32, author_id: guestUser10.id, category_id: category1.id)
-    
-    file1 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/alabamalure.jpg')
-         makingLuresOneOOne.photo.attach(io: file1, filename: 'alabamalure.jpg')
+
+file1 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/alabamalure.jpg')
+makingLuresOneOOne.photo.attach(io: file1, filename: 'alabamalure.jpg')
 
 #####################################################################################
 
 makingLures2 = Project.create!(description: "Tying Your Own Bucktail Dressed Trebles", materials: "Treble Hooks (size 3/0, 4/0, or 5/0),
 Tying Vise, scissors, head cement with applicator bottle, Heavy Thread (we like using D size), and bobbin, An assortment genuine white tail deer bucktails, Red hackle (Optional)", number_of_likes: 3, author_id: guestUser14.id, category_id: category1.id)
 
-    file2 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/alabamalure.jpg')
-        makingLures2.photo.attach(io: file2, filename: 'alabamalure.jpg')
-        
+file2 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/alabamalure.jpg')
+makingLures2.photo.attach(io: file2, filename: 'alabamalure.jpg')
+
 #####################################################################################
 makingLures3 = Project.create!(description: "Assemble Your Own French Spinners", materials: "Materials listed in directions", number_of_likes: 3, author_id: guestUser18.id, category_id: category1.id)
 
-    file3 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/drill.jpg')
-        makingLures3.photo.attach(io: file3, filename: 'drill.jpg')
+file3 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/drill.jpg')
+makingLures3.photo.attach(io: file3, filename: 'drill.jpg')
 
 #####################################################################################
 makingLures4 = Project.create!(description: "Make Your Balsa Wooden Plug", materials: "Materials included inside", number_of_likes: 3, author_id: guestUser22.id, category_id: category1.id)
 
-    file4 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures_and_hooks.jpg')
-        makingLures4.photo.attach(io: file4, filename: 'lures_and_hooks.jpg')
+file4 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures_and_hooks.jpg')
+makingLures4.photo.attach(io: file4, filename: 'lures_and_hooks.jpg')
 
 #####################################################################################
 makingLures5 = Project.create!(description: "Intro To Lure Making", materials:"N/A", number_of_likes: 3, author_id: guestUser29.id, category_id: category1.id)
 
-    file5 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/largeeyelure.jpg')
-        makingLures5.photo.attach(io: file5, filename: 'largeeyelure.jpg')
+file5 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/largeeyelure.jpg')
+makingLures5.photo.attach(io: file5, filename: 'largeeyelure.jpg')
 
 
 
@@ -115,8 +109,8 @@ makingLures5 = Project.create!(description: "Intro To Lure Making", materials:"N
 #####################################################################################
 makingLures7 = Project.create!(description: "Casting Your Own Lead Jigs", materials: "Lead, melting equipment (melting pot and ladle) and Do-It mold. Lead melts at 620°F so you require a reliable source of heat.", number_of_likes: 3, author_id: guestUser30.id, category_id: category1.id)
 
-    file7 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures-hardbaits.jpg')
-        makingLures5.photo.attach(io: file7, filename: 'lures-hardbaits.jpg')
+file7 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/lures-hardbaits.jpg')
+makingLures5.photo.attach(io: file7, filename: 'lures-hardbaits.jpg')
 
 
 
@@ -129,13 +123,57 @@ makingLures8.photo.attach(io: file8, filename: 'perchriglure.jpg')
 
 makingLures9 = Project.create!(description: "Which Lure Is For You?", materials: "N/A", number_of_likes: 3, author_id: guestUser15.id, category_id: category1.id)
 
-    file9 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/help_decide_lure.jpg')
-        makingLures9.photo.attach(io: file9, filename: 'help_decide_lure.jpg')
+file9 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/help_decide_lure.jpg')
+makingLures9.photo.attach(io: file9, filename: 'help_decide_lure.jpg')
 
 
 
+############################### PROJECTS ##########################################
+
+###############################  POLES   ##########################################
+
+buildingRods1 = Project.create!(description: "Why Buld Your Own", materials: "Materials Listed inside", number_of_likes: 32, author_id: guestUser10.id, category_id: category2.id)
+
+    file10 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingRod1.jpeg')
+        buildingRods1.photo.attach(io: file10, filename: 'fishingRod1.jpg')
+
+#####################################################################################
 
 
+buildingRods2 = Project.create!(description: "How To Get Started", materials: "Bamboo, Rod Winder, Some Sort of Weight", number_of_likes: 3, author_id: guestUser11.id, category_id: category2.id)
+    file11 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingRod2.png')
+        buildingRods2.photo.attach(io: file11, filename: 'fishingRod2.jpg')
+
+#####################################################################################
+
+
+buildingRods3 = Project.create!(description: "Choosing The Right Line", materials: "N/A", number_of_likes: 3, author_id: guestUser23.id, category_id: category2.id)
+        file12 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingLine5.jpeg')
+            buildingRods3.photo.attach(io: file12, filename: 'fishingLine5.jpg')
+
+#####################################################################################
+
+buildingRods4 = Project.create!(description: "Build your own rod: Part 1", materials: "N/A", number_of_likes: 3, author_id: guestUser28.id, category_id: category2.id)
+        file13 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingRod3.jpeg')
+            buildingRods4.photo.attach(io: file13, filename: 'fishingLine3.jpg')
+
+#####################################################################################
+
+buildingRods5 = Project.create!(description: "Build your own rod: Part 2", materials: "N/A", number_of_likes: 3, author_id: guestUser28.id, category_id: category2.id)
+        file14 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingRod3.jpeg')
+            buildingRods5.photo.attach(io: file14, filename: 'fishingLine3.jpg')
+#####################################################################################
+
+
+
+buildingRods6 = Project.create!(description: "Shorten Your Rod Butt", materials: "Replacement Butt, Hacksaw, Dremel", number_of_likes: 3, author_id: guestUser22.id, category_id: category2.id)
+        file15 = open('https://fishables-seed.s3-us-west-1.amazonaws.com/fishingRod4.jpeg')
+            buildingRods5.photo.attach(io: file15, filename: 'fishingLine4.jpg')
+############################### STEPS ##########################################
+
+#####################################################################################
+
+###############################  LURES ###############################################
 
 
 Step.destroy_all 
@@ -209,4 +247,55 @@ project9_step5 = Step.create!(title: "Plug", project_id: makingLures9.id, body: 
 
 
 
+
+############################### STEPS ##########################################
+
+#####################################################################################
+
+###############################  POLES ###############################################
+
+
+makingPoles1_step1 = Step.create!(title: "Why Build your own", body: "There are lots of reasons. First, there’s a great feeling of accomplishment when you catch a fish on a rod you have made yourself. It just increases the enjoyment of your sport. Second, you can design a rod that fits your fishing style. Like pitching crankbaits? A crankbait rod is a lot different than a rod made for jig fishing, or pulling spinners behind bottom bouncers or throwing spinnerbaits, or drop shotting.", project_id: buildingRods1.id)
+makingPoles1_step2 = Step.create!(title: "The biggest reason", body: "But perhaps the biggest reason is simply the enjoyment of doing so. How better to fill a couple of hours most winter evenings by working on a rod you will fish with next spring. It’s productive and it is time well spent.", project_id: buildingRods1.id)
+makingPoles1_step3 = Step.create!(title: "I've been making mine since the 60's!", body: " Those were the days of fiberglass. Honestly, there were few rods being made by the major companies that were any good for the sophistication that was rapidly entering the industry. Jig fishing was coming on strong, spoon plugging was making news across the north country. New crankbait designs were plentiful and the advent of plastics in fishing was just coming on.", project_id: buildingRods1.id)
+makingPoles1_step4 = Step.create!(title: "I reccommend bamboo", body: "For almost the past 20 years, my rod making has been focused on bamboo. I like the challenge and the learned skills that come with taking a bamboo pole and turning it into a fly rod that is well worth $1,000 or so. But every once in a while I buy a graphite blank and put it together because I just can’t resist it.", project_id: buildingRods1.id)
+
+#####################################################################################
+
+makingPoles2_step1 = Step.create!(title: "Let's get started!", body: "A good rod winder would be a wise purchase, although I’ve wrapped a lot of rods with the thread spool sitting in a bowl on a table with the thread going through the pages of a book. Add weight to the book, such as more books, until you get the tension you like and begin winding.But it helps to have a cradle to hold the rod while you wind the thread onto the guides. I don’t use a cradle because I have wrapped so many rods simply holding the blank in my hands it is just easier for me.", project_id: buildingRods2.id)
+makingPoles2_step2 = Step.create!(title: "Threading!", body: "You will need an inexpensive burnisher to pack your thread and burnish it after you wrap a guide to flatten the thread. Add a razor blade to cut your thread and you are ready to wrap. Once your wraps are made you can apply color preserver to maintain the thread color or simply apply special rod wrap epoxy without the color preserver, your choice.", project_id: buildingRods2.id)
+makingPoles2_step3 = Step.create!(title: "Grips" ,body: "You can make your own grips with cork disks or buy grips already shaped and ready to glue onto the blank with a reel seat.", project_id: buildingRods2.id)
+makingPoles2_step4 = Step.create!(title: "Where to Find Supplies", body: "I’ve always been a strong proponent of buying locally, so check out your local outlets to see what is being offered for the rod maker. Chances are there will not be much. For the businessman, it just isn’t feasible to stock the large number of rod building merchandise that will be needed to be offered for sale.", project_id: buildingRods2.id)
+makingPoles2_step5 = Step.create!(title: "There are many possibilities", body: "There’s also an incredible number of ways of customizing a rod, including decals, threadwork and penmanship. When it comes to customizing your own rod, the sky is the limit.", project_id: buildingRods2.id)
+
+
+
+#####################################################################################
+
+makingPoles3_step1 = Step.create!(title: "MONOFILAMENT", body: "Let me say right up front that I no longer flip or pitch with mono. There are better choices, and I use them. Still, it's not like I haven't caught my share of bass with it. In fact, it's all I used for many years.The first problem with monofilament fishing line is that its abrasion resistance isn't all that great. Almost by definition when you're flipping or pitching you're in heavy cover. That'll eat your line up in no time.The second big problem with mono is stretch. It can be very difficult to get a good hook set with it if you have a bad angle to the fish or too much line out. You can reduce the stretch factor by upsizing your line. The difference between 20-pound test and 25-pound test is huge.If you're on a very tight budget, monofilament is still the cheapest way to go. So, if you have to use it make sure you check it every few casts and retie frequently — at least after every fish — and never use less than 25-pound test (30 is even better).", project_id: buildingRods3.id)
+makingPoles3_step2 = Step.create!(title: "FLUOROCARBON", body: "I probably use fluorocarbon line 80 percent of the time. It has reasonably good abrasion resistance, almost no stretch and is nearly invisible.The lightest weight I use is 20-pound test, and I only fish with that under very controlled circumstances. If I'm flipping or pitching to isolated cover in very clear water I'll go with it, but it scares me even then. The risk of a break-off is just too great. I'm willing to take that risk, however, if I think it'll get me more quality bites.Most days I'm going to spool 25-pound test. It isn't that much harder to handle, and it gives me an extra margin of error. It removes the fear factor when I'm competing.", project_id: buildingRods3.id)
+makingPoles3_step3 = Step.create!(title: "BRAID", body: "Braid is really the best line for flipping and pitching. It doesn't break and it has no stretch. Unfortunately, it's highly visible, and that can be a big drawback in clear water. I always use it when conditions permit, however. Mostly that's when I'm penetrating heavy mats or fishing stained water.Fishing heavy mats is tough on your line. First, there's the abrasion factor. The heavy, snarled vegetation — some of it years old with a surface like sandpaper — can cut line in an instant. Braid will fray or cut; it's not perfect. But it won't do so nearly as quickly as monofilament or fluorocarbon.Next is the hook set factor. When you flip or pitch into a heavy mat you're dropping your bait down through it towards the bottom of the lake. If you look at what's happening, you'll note that the line runs from your rod tip straight to the mat and then goes straight down. It makes a 90-degree angle at the mat.", project_id: buildingRods3.id)
+
+
+
+#####################################################################################
+
+
+makingPoles4_step1 = Step.create!(title: "The Why of It", body: "For years, I've worked with Shimano in the development of their fishing rods, and I've learned a lot along the way. But until recently, I've never actually tried building one myself. And now that I know how simple it is, I regret not having done it sooner.I know what you're thinking — with so many rods out there to choose from, why build one yourself? Actually, there are several reasons. Building your own rod can be fun and rewarding, and, even better, it gives you the opportunity to build it to your own specifications.", project_id: buildingRods4.id)
+makingPoles4_step2 = Step.create!(title: "Getting Started", body: "Let's assume you know what type of rod it is you intend to build, and you already have a blank picked out — its material type, length and action, all ready to go. The next step is to pick the right guides, reel seat, and handle components so that the rod suits your specific needs. And believe it or not, much of that is decided by the brand and model reel you plan to pair to the rod when it's complete. To make the selection process easier for spinning rods, Anglers Resource developed a computerized program to help you make those choices. It's called Guide Placement Software (GPS) and it's super quick and easy. It's also free. I recommend looking there.", project_id: buildingRods4.id)
+makingPoles4_step3 = Step.create!(title: "Do You Need Fancy Tools?", body: "While a rod-turning machine would be nice, it's really not necessary. A large cardboard box with V notches cut in each end will work just fine. Once you have everything together, you're ready to begin the building process.", project_id: buildingRods4.id)
+
+
+#####################################################################################
+
+makingPoles5_step1 = Step.create!(title: "STEP 1: HANDLE ASSEMBLY", body: "To begin the build, you must first test-fit the handle components to the blank you've selected. This will include the reel seat, foregrip, rear grip and/or butt grip, butt cap, the arbors (that occupy the space between the reel seat and the blank) and the winding checks (the small decorative washers that cover and protect any exposed cork ends wherever they occur). The interior sections of each cork piece will need to be reamed with a rattail file, as will the arbors inside the reel seat. Remove only a necessary amount of material so that each piece fits snugly to the blank in its appropriate position. With all pieces in place, it’s time to glue up the handle, reels seat and winding checks using rod epoxy. Mark the blank with a white grease pencil so you'll know where to reposition each component. For visual help on this phase, follow this link.", project_id: buildingRods5.id)
+makingPoles5_step2 = Step.create!(title: "STEP 2: GUIDE PLACEMENT", body: "With the reel seat and grips secured to the blank, it's time to align the guide train (all of the guides) with the reel. This is the point where many new rod builders become confused. To assure correct spacing for maximum performance with your selected reel and blank, I suggest watching a couple of quick tutorials. For spinning rods, you're ready to apply the proprietary Guide Placement Software (GPS). Enter the required measurements of your reel into the proper boxes. Hopefully, you used this link in Part 1 when choosing your guides. The program provides the proper layout for any guide type in Fuji's selection.", project_id: buildingRods5.id)
+makingPoles5_step3 = Step.create!(title: "STEP 3: PRE-TESTING FOR PERFORMANCE", body: "With your GPS results for spinning, or a good understanding of static positioning for casting rods in hand, it’s time to “tape and test”. This is a critical aspect of your project, since it is the final phase of setting up your rod prior to wrapping.Tape the guides (regular masking tape works well) in place according to the type rod you're building and the style guide you selected. Mount the reel and use a practice plug to determine the overall performance of the rod. It should be quiet, smooth, and exhibit zero “line slap” against the blank. If necessary, move guides slightly to achieve optimum performance.  ", project_id: buildingRods5.id)
+makingPoles5_step4 = Step.create!(title: "STEP 4: GLUE AND CLEARCOAT", body: "The instructions are clear and simple. Once all guides are wrapped onto the rod in their predetermined positions, it’s time for a final clear coat of finish over the thread.", project_id: buildingRods5.id)
+
+
+makingPoles6_step1 = Step.create!(title: "How dedicated are you?", body: "I've shortened the butts on many of my rods...the way I fish and the size of my hands, I don't need those long butts, and in my opinion, if the rod is of good quality and light weight, the so-called balance that the butts are supposed to provide is highly overrated. And long butts get in the way when I'm manipulating a topwater lure. I often don't even bother to plug up the end of the rod butt once I hacksaw it off. Might look a little trashy and unfinished, but it doesn't affect the use of the rod that I can see.", project_id: buildingRods6.id)
+makingPoles6_step2 = Step.create!(title: "Adding New Butt(if you wish)", body: "When it comes to choosing butt-cap styles, Fogle notes that gimbaled caps, which lock into a holder, might be necessary for trollers and those who fight large pelagics. Do not, however, try to brace a gimbaled butt cap against your gut without a fighting belt or a slide-on butt cap unless you enjoy being bruised and scraped. Fogle also says that long-butt offshore boat rods (intended strictly for use in a fighting chair) have become far less popular than stand-up gear in the past few years, although he has recently built rods for some customers with Winthrop rod butts that adjust between straight and bent, and can be multipurposed.", project_id: buildingRods6.id)
+makingPoles6_step3 = Step.create!(title: "Finishin Up", body: "So at least for the time being, aluminum will be reserved for the heaviest applications, while casting and inshore rods will remain limited to cork, EVA, Hypalon, rubber and plastic. And this fits a familiar pattern: As is true of most fishing gear, every choice reflects a trade-off. A rod used purely for casting light lures in inshore waters will be best off with a light butt and a plastic cap, just as long as you realize that plastic won’t last forever. You can improve longevity with rubber, but weight will also go up. A rod used for heavier action will benefit from the added leverage of a longer butt, but you’ll pay for that leverage when the butt gets caught in your shirt or jacket as you try to cast.Each seemingly small choice you make when selecting a rod butt has an effect on different aspects of how you use that rod. And while the tiptop might get most of the attention, that butt end plays a significant role in just how satisfied you will ultimately be with each and every fishing rod in your rack.", project_id: buildingRods6.id)
 end
+

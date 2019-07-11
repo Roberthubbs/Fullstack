@@ -10,38 +10,59 @@ class Api::ProjectsController < ApplicationController
     end  
 
     def edit 
+        
         @project = Project.find(params[:id])
-        @project.update_attributes(project_params)
-        if @project.save 
-            render :show 
-        end 
+        # @project.update_attributes(project_params)
+        # if @project.save 
+        #     render :show 
+        # end 
     end 
 
 
-    # def update 
+    def update 
+       
+         @project = Project.find(params[:id])
         
+       
         
-    #     @project.update_attributes(project_params)
-    #     if @project.save 
-    #         render `api/projects` 
-    #     end 
-    # end
+        # @project.photo.attach(io: project_params[:photo], filename: params[:filename])
+        
+        if @project.photo
+            @project.photo.attach(project_params[:photo])
+       
+        end
+        if  @project.update_attributes(project_params)
+            render `api/projects` 
+        end 
+    end
 
     def create 
+        # photo1 = open("https://fishables-seed.s3-us-west-1.amazonaws.com/lures-hardbaits.jpg")
+        
         @project = Project.new(project_params)
+        
         @project.author_id = current_user.id
         @project.number_of_likes = 0
         @project.category_id = 0 #delete this 
 
+        # if @project.photo
+        #     @project.picture.attach(project_params[:photo])
+       
+        # end
        
         if @project.save 
-            render 'api/projects/edit'
+            render 'api/projects/update'
         else   
-            render ["Body or Title can't be blank"]
+            render json: @project.errors.full_messages
         end  
     end  
 
     def project_params 
-        params.require(:project).permit(:description, :author_id, :number_of_likes, :materials, :category_id)
+        # params.require(:project).permit(:description, :author_id, :number_of_likes, :materials, :category_id, :photo)
+        params.require(:project).permit(:description, :author_id, :number_of_likes, :materials, :category_id, :photo)
+    end
+    def create_params 
+        # params.require(:project).permit(:description, :author_id, :number_of_likes, :materials, :category_id, :photo)
+        params.fetch(:project, {}).permit(:description, :author_id, :number_of_likes, :materials, :category_id)
     end
 end
