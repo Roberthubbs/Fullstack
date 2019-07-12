@@ -18,17 +18,18 @@
 * Search Projects by category 
 
 ## Issues and Solutions:
-* Issue rendering index from category page.  Issue was solved with a render: false in the state: 
-** `this.state = {
+* Issue rendering index from category page.  Issue was solved with a render: false in the state:
+* When entering index page from categories, all categories would not be received in time. Attempted solutions were a componentDidMount, changing location of function call, returning null if !projects.  
+* `this.state = {
             render: false
         }`
-** ` setTimeout(function () {
+* ` setTimeout(function () {
             this.setState({ render: true })
         }.bind(this), 2000)`
         
         
 * Issue creating new projects.  In order to create projects, they must first send a request to the backend to save a new id for the project, and are then edited.  Initial solution to this was loading page, that has now been corrected to push to edit page asynchronously.  
-** `this.props.createProject(this.state).then((project) => {
+* `this.props.createProject(this.state).then((project) => {
             that.props.history.push(`/projects/${project.id}/edit`)
             }
         )`
