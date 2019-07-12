@@ -17,6 +17,8 @@
 * Upload and like projects
 * Search Projects by category 
 
+[Home Page Image](https://user-images.githubusercontent.com/46801755/61147231-bd51a080-a490-11e9-84b9-374d9d9742ff.png)
+
 ## Issues and Solutions:
 * Issue rendering index from category page.  Issue was solved with a render: false in the state:
 * When entering index page from categories, all categories would not be received in time. Attempted solutions were a componentDidMount, changing location of function call, returning null if !projects.  
