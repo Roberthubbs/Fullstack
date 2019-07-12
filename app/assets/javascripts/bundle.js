@@ -183,9 +183,11 @@ var App = function App() {
     path: "/loading",
     component: _components_projects_loading_proj_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
+    exact: true,
     path: "/projects/:projectId/edit",
     component: _components_projects_edit_project_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
+    exact: true,
     path: "/projects/:projectId/steps",
     component: _components_steps_create_step_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -257,23 +259,27 @@ var fetchCategories = function fetchCategories() {
 /*!********************************************!*\
   !*** ./frontend/actions/project_action.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, receiveAllProjects, receiveProject, fetchProject, fetchProjects, createProject, updateProject */
+/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, REMOVE_PROJECT, receiveAllProjects, receiveProject, removeProject, fetchProject, fetchProjects, createProject, updateProject, deleteProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PROJECTS", function() { return RECEIVE_ALL_PROJECTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT", function() { return RECEIVE_PROJECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PROJECT", function() { return REMOVE_PROJECT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllProjects", function() { return receiveAllProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProject", function() { return receiveProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeProject", function() { return removeProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProject", function() { return fetchProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
 /* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/project_api_util */ "./frontend/util/project_api_util.js");
 
 var RECEIVE_ALL_PROJECTS = "RECEIVE_ALL_PROJECTS";
 var RECEIVE_PROJECT = "RECEIVE_PROJECT";
+var REMOVE_PROJECT = "REMOVE_PROJECT";
 var receiveAllProjects = function receiveAllProjects(projects) {
   return {
     type: RECEIVE_ALL_PROJECTS,
@@ -284,6 +290,12 @@ var receiveProject = function receiveProject(payload) {
   return {
     type: RECEIVE_PROJECT,
     payload: payload
+  };
+};
+var removeProject = function removeProject(id) {
+  return {
+    type: REMOVE_PROJECT,
+    id: id
   };
 };
 var fetchProject = function fetchProject(projectId) {
@@ -311,6 +323,13 @@ var updateProject = function updateProject(project) {
   return function (dispatch) {
     return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProject"](project).then(function (project) {
       return dispatch(receiveProject(project));
+    });
+  };
+};
+var deleteProject = function deleteProject(id) {
+  return function (dispatch) {
+    return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteProject"](id).then(function () {
+      return dispatch(removeProject(id));
     });
   };
 };
@@ -479,7 +498,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger;
       var categories = this.props.categories;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-index-item-list"
@@ -597,7 +615,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-show-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Projects involving: ", category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item-grid"
+        className: "item-show-grid"
       }, projects.map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "project-items"
@@ -1170,15 +1188,24 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state.currentUser = _this.props.currentUser;
     return _this;
-  }
+  } // handleSubmit(e){
+  //     e.preventDefault();
+  //     let that = this;
+  //     this.props.createProject(this.state).then((project) => {
+  //         console.log(project)
+  //         that.props.history.push(`/loading`)
+  //         }
+  //     )
+  // }
+
 
   _createClass(NewProjectForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
       var that = this;
-      this.props.createProject(this.state).then(function () {
-        that.props.history.push("/loading");
+      this.props.createProject(this.state).then(function (project) {
+        that.props.history.push("/projects/".concat(project.payload.project.id, "/edit"));
       });
     }
   }, {
@@ -1274,32 +1301,39 @@ var ProjectIndex =
 function (_React$Component) {
   _inherits(ProjectIndex, _React$Component);
 
-  function ProjectIndex() {
+  function ProjectIndex(props) {
+    var _this;
+
     _classCallCheck(this, ProjectIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndex).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndex).call(this, props));
+    _this.state = {
+      render: false
+    };
+    return _this;
   }
 
   _createClass(ProjectIndex, [{
     key: "componentDidMount",
-    // constructor(props){
-    //     super(props)
-    //     this.state = this.projects;
-    // }
     value: function componentDidMount() {
       this.props.receiveAllProjects();
       this.props.receiveAllCategories();
+      setTimeout(function () {
+        this.setState({
+          render: true
+        });
+      }.bind(this), 2000);
     }
   }, {
     key: "selectFromLures",
     value: function selectFromLures() {
       if (!this.props.projects) return null;
       var lureArr = [];
-      var categories = this.props.categories || {};
-      var projects = this.props.projects || {};
+      var categories = this.props.categories;
+      var projects = this.props.projects;
       var i = 0;
 
-      while (lureArr.length < 5 && this.props.categories) {
+      while (lureArr.length < 4 && this.props.categories) {
         if (projects[i].category_id === categories[0].id) {
           lureArr.push(projects[i]);
         }
@@ -1319,7 +1353,7 @@ function (_React$Component) {
       var projects = this.props.projects || {};
       var i = 0;
 
-      while (poleArr.length < 5 && this.props.categories) {
+      while (poleArr.length < 4 && this.props.categories) {
         if (projects[i].category_id === categories[1].id) {
           poleArr.push(projects[i]);
         }
@@ -1331,69 +1365,172 @@ function (_React$Component) {
       return poleArr;
     }
   }, {
+    key: "selectUserPosts",
+    value: function selectUserPosts() {
+      if (!this.props.projects) return null;
+      var userPostArr = [];
+      var projects = this.props.projects || {};
+      var i = 0;
+
+      while (userPostArr.length < 4 && i < projects.length) {
+        if (projects[i].author_id === this.props.currentUser) {
+          userPostArr.push(projects[i]);
+        }
+
+        i++;
+      }
+
+      ;
+      return userPostArr;
+    }
+  }, {
     key: "render",
     value: function render() {
+      if (this.state.render === false) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loading-spinner"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "spinner",
+          src: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+        }));
+      }
+
       if (this.props.projects.length === 0) return null;
       if (this.props.categories.length === 0) return null;
       var lures = this.selectFromLures();
       var poles = this.selectFromPoles();
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "background-image-index",
-        src: "SurfFishing.gif"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "over-image"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "YOURS FOR THE FISHING")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "over-image-p"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fishables is a community for you to share and learn tricks for fishing.  Explore, Share, and make yourself a better angler today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-constants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "step-by-step"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "first-index-constant"
-      }, "Step-By-Step"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "index-con"
-      }, "We teach you how to make any and all things fishing.  From cold mountain streams to vast oceans we're there for you.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "made-by-you"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "second-index-constant"
-      }, "Made By You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "index-con"
-      }, "Not only does Fishables gives the ability to learn new skills.  You have skills of your own to share, and we've got the platform to do it.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "a-happy-place"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "third-index-constant"
-      }, "A Happy Place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "right-index-con"
-      }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item-grid"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category-comp"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "featured-title"
-      }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/categories/".concat(this.props.categories[0].id),
-        className: "index-category-title"
-      }, "Lures:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), lures.map(function (lure) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "project-index-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: lure.id,
-          project: lure
-        }));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "index-category-title"
-      }, "Poles:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), poles.map(function (pole) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "project-index-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: pole.id,
-          project: pole
-        }));
-      })))));
+      var userPosts = this.selectUserPosts();
+
+      if (this.props.currentUser) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "background-image-index",
+          src: "SurfFishing.gif"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "over-image"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "YOURS FOR THE FISHING")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "over-image-p"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fishables is a community for you to share and learn tricks for fishing.  Explore, Share, and make yourself a better angler today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "index-constants"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "step-by-step"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "first-index-constant"
+        }, "Step-By-Step"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "index-con"
+        }, "We teach you how to make any and all things fishing.  From cold mountain streams to vast oceans we're there for you.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "made-by-you"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "second-index-constant"
+        }, "Made By You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "index-con"
+        }, "Not only does Fishables gives the ability to learn new skills.  You have skills of your own to share, and we've got the platform to do it.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "a-happy-place"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "third-index-constant"
+        }, "A Happy Place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "right-index-con"
+        }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "item-grid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-comp"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "featured-title"
+        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/categories/".concat(this.props.categories[0].id),
+          className: "index-category-title"
+        }, "Lures:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), lures.map(function (lure) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: lure.id,
+            project: lure
+          }));
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/categories/".concat(this.props.categories[1].id),
+          className: "index-category-title"
+        }, "Poles:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), poles.map(function (pole) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: pole.id,
+            project: pole
+          }));
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "index-category-title"
+        }, "Posts By You:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), userPosts.map(function (post) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: post.id,
+            project: post
+          }));
+        })))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "background-image-index",
+          src: "SurfFishing.gif"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "over-image"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "YOURS FOR THE FISHING")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "over-image-p"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fishables is a community for you to share and learn tricks for fishing.  Explore, Share, and make yourself a better angler today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "index-constants"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "step-by-step"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "first-index-constant"
+        }, "Step-By-Step"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "index-con"
+        }, "We teach you how to make any and all things fishing.  From cold mountain streams to vast oceans we're there for you.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "made-by-you"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "second-index-constant"
+        }, "Made By You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "index-con"
+        }, "Not only does Fishables gives the ability to learn new skills.  You have skills of your own to share, and we've got the platform to do it.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "a-happy-place"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "third-index-constant"
+        }, "A Happy Place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "right-index-con"
+        }, "Fishing can be anywhere from exhilarating to calming.  Whatever the case, however seriously you angle, fishables is there to make it more enjoyable."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "item-grid"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-comp"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "featured-title"
+        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/categories/".concat(this.props.categories[0].id),
+          className: "index-category-title"
+        }, "Lures:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), lures.map(function (lure) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: lure.id,
+            project: lure
+          }));
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/categories/".concat(this.props.categories[1].id),
+          className: "index-category-title"
+        }, "Poles:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), poles.map(function (pole) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: pole.id,
+            project: pole
+          }));
+        })))));
+      }
     }
   }]);
 
@@ -1422,10 +1559,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  debugger;
   return {
     categories: Object.values(state.entities.categories),
-    projects: Object.values(state.entities.projects)
+    projects: Object.values(state.entities.projects),
+    currentUser: state.session.id || null
   };
 };
 
@@ -1541,9 +1678,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1557,16 +1694,33 @@ var ProjectShow =
 function (_React$Component) {
   _inherits(ProjectShow, _React$Component);
 
-  function ProjectShow() {
+  function ProjectShow(props) {
+    var _this;
+
     _classCallCheck(this, ProjectShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props));
+    _this.state = {
+      projectId: _this.props.projectId
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProject(this.props.match.params.projectId);
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      this.props.deleteProject(this.state.projectId).then(function () {
+        return _this2.props.history.push("/");
+      });
     }
   }, {
     key: "render",
@@ -1626,7 +1780,10 @@ function (_React$Component) {
           className: "add-step-link"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/projects/".concat(project.id, "/steps")
-        }, "Add Another Step")));
+        }, "Add Another Step")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "delete-button",
+          onClick: this.handleClick
+        }, "Delete Project")));
       }
     }
   }]);
@@ -1667,6 +1824,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(projectId) {
       return dispatch(Object(_actions_project_action__WEBPACK_IMPORTED_MODULE_2__["fetchProject"])(projectId));
+    },
+    deleteProject: function deleteProject(id) {
+      return dispatch(Object(_actions_project_action__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(id));
     }
   };
 };
@@ -2106,7 +2266,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "step-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "step-title"
@@ -2320,7 +2482,7 @@ var categoriesReducer = function categoriesReducer() {
       // let newState = action.category
       // let newProjects = ({[action.projects]: action.projects})
       // return merge({}, newState, newProjects);
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, action.payload.category);
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, action.payload.category);
 
     default:
       return state;
@@ -2409,6 +2571,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, _defineProperty({}, action.payload.project.id, action.payload.project));
+
+    case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
+      debugger;
+      var id = action.id;
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state);
+      delete newState[id];
+      return newState;
 
     case _actions_category_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CATEGORY"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, action.payload.projects);
@@ -2684,7 +2853,7 @@ var fetchCategory = function fetchCategory(categoryId) {
 /*!*******************************************!*\
   !*** ./frontend/util/project_api_util.js ***!
   \*******************************************/
-/*! exports provided: fetchProject, fetchProjects, createProject, updateProject */
+/*! exports provided: fetchProject, fetchProjects, createProject, updateProject, deleteProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2693,6 +2862,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
 var fetchProject = function fetchProject(id) {
   return $.ajax({
     method: "GET",
@@ -2713,16 +2883,7 @@ var createProject = function createProject(payload) {
       project: payload
     }
   });
-}; // export const updateProject = (formData, id) => (
-//     $.ajax({
-//         method: "PATCH",
-//         url: `/api/projects/${id}`,
-//         data: { formData },
-//         contentType: false,
-//         processData: false
-//     })
-// )
-
+};
 var updateProject = function updateProject(formData) {
   return $.ajax({
     method: "PATCH",
@@ -2730,6 +2891,12 @@ var updateProject = function updateProject(formData) {
     data: formData,
     contentType: false,
     processData: false
+  });
+};
+var deleteProject = function deleteProject(id) {
+  return $.ajax({
+    url: "api/projects/".concat(id),
+    method: "delete"
   });
 };
 

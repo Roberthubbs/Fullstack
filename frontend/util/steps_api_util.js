@@ -2,7 +2,6 @@
 
 
 export const createStep = (step) => {
-  
     return $.ajax({
         method: 'POST',
         url: `api/projects/${step.projectId}/steps`,

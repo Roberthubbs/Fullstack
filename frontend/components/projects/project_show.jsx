@@ -3,13 +3,23 @@ import { Link } from 'react-router-dom';
 
 
 class ProjectShow extends React.Component {
-    
+    constructor(props){
+        super(props)
+        this.state = {
+            projectId: this.props.projectId
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
     componentDidMount(){
         
         this.props.fetchProject(this.props.match.params.projectId)
         
     }
     
+    handleClick(e){
+        e.preventDefault()
+        this.props.deleteProject(this.state.projectId).then(() => this.props.history.push("/"))
+    };
     
     render() {
         
@@ -65,7 +75,9 @@ class ProjectShow extends React.Component {
                         Add Another Step
                     </Link>
                 </div>
-
+                <div>
+                    <button className="delete-button"onClick={this.handleClick}>Delete Project</button>
+                </div>
             </div>
         )}
     }

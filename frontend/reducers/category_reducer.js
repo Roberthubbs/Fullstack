@@ -16,7 +16,7 @@ const categoriesReducer =(state={}, action) =>{
             // let newProjects = ({[action.projects]: action.projects})
            
             // return merge({}, newState, newProjects);
-            return merge({}, action.payload.category)
+            return merge({}, state, action.payload.category)
         default: 
             return state;
     }

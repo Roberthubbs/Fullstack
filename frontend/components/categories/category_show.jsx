@@ -18,7 +18,7 @@ class CategoryShow extends React.Component {
         return (
             <div className="category-show-title">
             <h2>Projects involving: {category.name}</h2>
-            <div className="item-grid"> 
+            <div className="item-show-grid"> 
             {projects.map(project => (
               
                 <div className="project-items">

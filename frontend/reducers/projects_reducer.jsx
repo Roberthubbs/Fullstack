@@ -1,6 +1,7 @@
 import {
     RECEIVE_ALL_PROJECTS,
-    RECEIVE_PROJECT
+    RECEIVE_PROJECT,
+    REMOVE_PROJECT
 } from '../actions/project_action';
 import {
     RECEIVE_CATEGORY
@@ -17,6 +18,12 @@ export default (state ={}, action) => {
         case RECEIVE_PROJECT:
            
             return merge({},state,{[action.payload.project.id]: action.payload.project});
+        case REMOVE_PROJECT:
+             debugger;
+            const { id } = action;
+            let newState = merge({}, state);
+            delete newState[id];
+            return newState;
         case RECEIVE_CATEGORY:
             return merge({}, action.payload.projects)
         default:

@@ -47,8 +47,8 @@ const App = () => (
             <Route exact path="/project/create" component={NewProjectContainer} />
             <Route exact path="/categories" component={CategoryIndexContainer} />
             <Route exact path="/loading" component={LoadingProjectContainer} />
-            <Route path="/projects/:projectId/edit" component={EditProjectContainer} />
-            <Route path="/projects/:projectId/steps" component={StepFormContainer} />
+            <Route exact path="/projects/:projectId/edit" component={EditProjectContainer} />
+            <Route exact path="/projects/:projectId/steps" component={StepFormContainer} />
         </Switch>
         <div className="perm-bottom-border">
        <footer >

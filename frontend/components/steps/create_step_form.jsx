@@ -35,7 +35,7 @@ class CreateStepForm extends React.Component {
     render() {
         
         return (
-            <div>
+            <div className="step-form">
 
                 <form onSubmit={this.handleSubmit}>
                     <label className="step-title">

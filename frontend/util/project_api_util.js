@@ -22,15 +22,7 @@ export const createProject = (payload) => (
     })
 );
 
-// export const updateProject = (formData, id) => (
-//     $.ajax({
-//         method: "PATCH",
-//         url: `/api/projects/${id}`,
-//         data: { formData },
-//         contentType: false,
-//         processData: false
-//     })
-// )
+
 export const updateProject = (formData) => {
    
     return $.ajax({
@@ -40,5 +32,14 @@ export const updateProject = (formData) => {
         contentType: false,
         processData: false
     })
-}
+};
+
+export const deleteProject = (id) => {
+    return (
+        $.ajax({
+            url: `api/projects/${id}`,
+            method: "delete"
+        })
+    );
+};
 

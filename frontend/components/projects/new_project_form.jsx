@@ -8,12 +8,22 @@ class NewProjectForm extends React.Component {
         this.state.currentUser = this.props.currentUser;
     }
 
+    // handleSubmit(e){
+    //     e.preventDefault();
+        
+    //     let that = this;
+    //     this.props.createProject(this.state).then((project) => {
+    //         console.log(project)
+    //         that.props.history.push(`/loading`)
+    //         }
+    //     )
+    // }
     handleSubmit(e){
         e.preventDefault();
         
         let that = this;
-        this.props.createProject(this.state).then(() => {
-            that.props.history.push(`/loading`)
+        this.props.createProject(this.state).then((project) => {
+            that.props.history.push(`/projects/${project.payload.project.id}/edit`)
             }
         )
     }

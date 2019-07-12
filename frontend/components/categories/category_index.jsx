@@ -9,7 +9,6 @@ class CategoryIndex extends React.Component {
     };
     
     render() {
-        // debugger;
         const { categories }   = this.props;
         
         return (

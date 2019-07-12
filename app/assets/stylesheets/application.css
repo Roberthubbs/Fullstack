@@ -304,7 +304,7 @@
      margin-right: auto;
     grid-gap: 50px;
     margin-bottom: 100px;
-   
+   max-width: 90%;
 }
 .add-step-link{
     margin-left: auto;
@@ -723,6 +723,7 @@
 .category-comp{
     display: flex;
     flex-direction: column;
+    max-width: 90%;
 }
 
 .category-row{
@@ -736,7 +737,7 @@
     position: relative;
     top: 0;
     flex-direction: row;
-    margin-left: 30px;
+    /* margin-left: 10px; */
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700px;
@@ -842,4 +843,45 @@
     border-radius: 4px;
     color: rgb(90, 90, 90);
     /* margin: auto; */
+}
+
+.delete-button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    align-content: center;
+    background-color: #b94a48;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    /* position: absolute; */
+    bottom: 10px;
+}
+
+.item-show-grid{
+    margin-left: 200px;
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* margin-left: auto;  */
+     margin-right: auto;
+    grid-gap: 50px;
+    margin-bottom: 100px;
+   max-width: 90%;
+
+}
+
+.step-form{
+    min-height: 900px;
+    display: flex;
+    margin-left: 300px;
+}
+
+.step-title-input{
+    margin-top: 150px;
+    align-items: center;
 }
