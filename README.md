@@ -1,24 +1,38 @@
 # README
+[fishables](https://fishables.herokuapp.com)
+# Fishables is an app to look up projects related to fishing.  This includes categories such as building your own rod and lures.  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies: 
+* `Ruby on Rails`
+* Ruby Version 2.5.1 
+* Rails Version 5.2.3 
+* `Node`
+* React 16.8.6
+* Redux 4.01
+* webpack 4.35.2
+* webpack-cli 3.3.5
 
-Things you may want to cover:
 
-* Ruby version
+## User capabilities: 
+* Upload and like projects
+* Search Projects by category 
 
-* System dependencies
+## Issues and Solutions:
+* Issue rendering index from category page.  Issue was solved with a render: false in the state: 
+** `this.state = {
+            render: false
+        }`
+** ` setTimeout(function () {
+            this.setState({ render: true })
+        }.bind(this), 2000)`
+        
+        
+* Issue creating new projects.  In order to create projects, they must first send a request to the backend to save a new id for the project, and are then edited.  Initial solution to this was loading page, that has now been corrected to push to edit page asynchronously.  
+** `this.props.createProject(this.state).then((project) => {
+            that.props.history.push(`/projects/${project.id}/edit`)
+            }
+        )`
+        
+   
+ 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
