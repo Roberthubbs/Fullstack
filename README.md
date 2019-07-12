@@ -11,7 +11,8 @@
 * Redux 4.01
 * webpack 4.35.2
 * webpack-cli 3.3.5
-
+* `database`
+* postgresql >= 0.18, < 2.0
 
 ## User capabilities: 
 * Upload and like projects
