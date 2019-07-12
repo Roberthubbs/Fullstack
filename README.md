@@ -22,6 +22,11 @@
 ## Issues and Solutions:
 * Issue rendering index from category page.  Issue was solved with a render: false in the state:
 * When entering index page from categories, all categories would not be received in time. Attempted solutions were a componentDidMount, changing location of function call, returning null if !projects.  
+
+
+![create project image](https://user-images.githubusercontent.com/46801755/61147240-c2aeeb00-a490-11e9-89fb-f79c9faadd01.png)
+
+
 * `this.state = {
             render: false
         }`
