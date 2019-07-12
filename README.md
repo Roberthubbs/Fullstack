@@ -29,16 +29,16 @@
 
 ![image_index](https://user-images.githubusercontent.com/46801755/61147759-01917080-a492-11e9-8d5f-ac4e61d43086.png)
 
- `this.state = {
+* `this.state = {
             render: false
         }`
- ` setTimeout(function () {
+* ` setTimeout(function () {
             this.setState({ render: true })
         }.bind(this), 2000)`
         
         
 * Issue creating new projects.  In order to create projects, they must first send a request to the backend to save a new id for the project, and are then edited.  Initial solution to this was loading page, that has now been corrected to push to edit page asynchronously.  
- `this.props.createProject(this.state).then((project) => {
+* `this.props.createProject(this.state).then((project) => {
             that.props.history.push(`/projects/${project.id}/edit`)
             }
         )`
