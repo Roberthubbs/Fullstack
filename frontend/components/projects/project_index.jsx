@@ -132,9 +132,9 @@ export class ProjectIndex extends React.Component {
                 <div className="item-grid">
                     <div className="category-comp">
                         <h2 className="featured-title">Todays Featured Fishables</h2>
+                            <Link to={`/categories/${this.props.categories[0].id}`} className="index-category-title">Lures:</Link>
                         <div className="category-row">
                             {/* <h2 className="index-category-title">Lures:</h2> */}
-                            <Link to={`/categories/${this.props.categories[0].id}`} className="index-category-title">Lures:</Link>
                             <br />
                             {lures.map(lure => (
 
@@ -149,8 +149,8 @@ export class ProjectIndex extends React.Component {
 
                             ))}
                         </div>
-                        <div className="category-row">
                             <Link to={`/categories/${this.props.categories[1].id}`} className="index-category-title">Poles:</Link>
+                        <div className="category-row">
                             <br />
                             {poles.map(pole => (
 
@@ -165,9 +165,9 @@ export class ProjectIndex extends React.Component {
 
                             ))}
                         </div>
-                        <div className="category-row">
                             <h2 className="index-category-title">Posts By You:</h2>
-                            <br />
+                        <div className="category-row">
+                            
                             {userPosts.map(post=> (
 
                                 <div className="project-index-item">

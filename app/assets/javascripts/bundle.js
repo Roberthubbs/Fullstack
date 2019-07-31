@@ -1482,35 +1482,35 @@ function (_React$Component) {
           className: "category-comp"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "featured-title"
-        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "category-row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/categories/".concat(this.props.categories[0].id),
           className: "index-category-title"
-        }, "Lures:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), lures.map(function (lure) {
+        }, "Lures:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), lures.map(function (lure) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "project-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
             key: lure.id,
             project: lure
           }));
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "category-row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/categories/".concat(this.props.categories[1].id),
           className: "index-category-title"
-        }, "Poles:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), poles.map(function (pole) {
+        }, "Poles:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), poles.map(function (pole) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "project-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
             key: pole.id,
             project: pole
           }));
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "category-row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "index-category-title"
-        }, "Posts By You:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), userPosts.map(function (post) {
+        }, "Posts By You:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category-row"
+        }, userPosts.map(function (post) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "project-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -42508,7 +42508,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
