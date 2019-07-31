@@ -5,13 +5,28 @@ export const fetchProject = id => (
     })
 );
 
-export const fetchProjects = () => (
+export const fetchProjects = (search_string) => {
+    return(
     $.ajax({
         method: 'GET',
-        url: `/api/projects`
+        url: `/api/projects`,
+        data: {
+            search_string
+        }
     })
-);
-
+    )
+};
+export const fetchSearchProjects = (search_string) => {
+    return(
+        $.ajax({
+            method: 'GET',
+            url: '/api/projects',
+            data: {
+                search_string
+            }
+        })
+    )
+}
 export const createProject = (payload) => (
     $.ajax({
         method: 'POST',

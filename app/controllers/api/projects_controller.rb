@@ -1,9 +1,23 @@
 class Api::ProjectsController < ApplicationController
 
     def index 
-        @projects = Project.all
+         
+        
+        if params[:search_string]
+            @projects = Project.search_by_title(params[:search_string])
+        else
+            @projects = Project.all
+        end
+        p @projects
         render 'api/projects/index'
     end  
+
+    def search 
+     if params[:search_string]
+      @projects = Project.search_by_title(params[:search_string])
+     end 
+     render 'api/projects/index'
+    end
 
     def show 
         @project = Project.find(params[:id])
@@ -17,7 +31,6 @@ class Api::ProjectsController < ApplicationController
         #     render :show 
         # end 
     end 
-
 
     def update 
        

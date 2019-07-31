@@ -32,6 +32,12 @@ class Project < ApplicationRecord
     has_many :steps,
         foreign_key: :project_id,
         class_name: :Step
+
+
+    def self.search_by_title(description)
+        projects = Project.arel_table
+        Project.where(projects[:description].matches("%#{description}%"))
+    end
     # def photo_url
     #     if self.photo.attached?
     #         Rails.application.routes.url_helpers.rails_blob_path(self.photo, only_path: true)

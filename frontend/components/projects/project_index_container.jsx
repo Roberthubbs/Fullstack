@@ -3,6 +3,7 @@ import ProjectIndex from './project_index';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../../actions/category_actions'
 const mapStateToProps = (state) => {
+    
     return {
     
         categories: Object.values(state.entities.categories),
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        receiveAllProjects: () => (dispatch(fetchProjects())),
+        receiveAllProjects: (search_string) => (dispatch(fetchProjects(search_string))),
         receiveAllCategories: () => (dispatch(fetchCategories()))
     }
 };

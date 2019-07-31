@@ -14,15 +14,27 @@ export class ProjectIndex extends React.Component {
     }
 
     componentDidMount() {
-
+        // debugger;
+        if (this.props.location.pathname.includes("search")) {
+            // debugger
+            this.props.receiveAllProjects(this.props.match.params.query);
+        } else {
+        
+        
         this.props.receiveAllProjects();
         this.props.receiveAllCategories();
+        }
         setTimeout(function () {
             this.setState({ render: true })
         }.bind(this), 2000)
     }
 
-
+    // componentDidUpdate(prevProps, prevState) {
+    //     // debugger;
+    //     if (prevProps.match.params.query !== this.props.match.params.query) {
+    //         this.props.receiveAllProjects(this.props.match.params.query);
+    //     }
+    // }
     selectFromLures() {
         if (!this.props.projects) return null;
         const lureArr = [];
@@ -30,7 +42,6 @@ export class ProjectIndex extends React.Component {
         const projects = this.props.projects;
         let i = 0;
         while (lureArr.length < 4 && this.props.categories) {
-           
             if (projects[i].category_id === categories[0].id) {
                 lureArr.push(projects[i])
             }
@@ -46,7 +57,6 @@ export class ProjectIndex extends React.Component {
         const projects = this.props.projects || {};
         let i = 0;
         while (poleArr.length < 4 && this.props.categories) {
-
             if (projects[i].category_id === categories[1].id) {
                 poleArr.push(projects[i])
             }
@@ -85,7 +95,7 @@ export class ProjectIndex extends React.Component {
         const userPosts = this.selectUserPosts();
         if (this.props.currentUser){
         return (
-            <div>
+            <div className="styled-grid">
                 <div>
                     <img className="background-image-index" src="SurfFishing.gif" />
                 </div>
@@ -118,21 +128,7 @@ export class ProjectIndex extends React.Component {
                     </div>
 
                 </div>
-                {/* <div className="item-grid">
-            {projects.map(project => (
                 
-                <div className="project-index-item">
-                    <ProjectItem 
-                    key={project.id}
-                    project={project}
-                    />
-                </div>
-            
-                    
-                
-            ))}
-                </div>
-           </div> */}
                 <div className="item-grid">
                     <div className="category-comp">
                         <h2 className="featured-title">Todays Featured Fishables</h2>
@@ -277,6 +273,7 @@ export class ProjectIndex extends React.Component {
                     </div>
                 </div>
             </div>
+               
             </div >
         )
     }
