@@ -41,12 +41,31 @@ export class ProjectIndex extends React.Component {
         const categories = this.props.categories;
         const projects = this.props.projects;
         let i = 0;
-        while (lureArr.length < 4 && this.props.categories) {
-            if (projects[i].category_id === categories[0].id) {
-                lureArr.push(projects[i])
-            }
-            i++;
-        };
+        if (window.innerWidth <= 1010){
+
+            while (lureArr.length < 3 && this.props.categories) {
+                if (projects[i].category_id === categories[0].id) {
+                    lureArr.push(projects[i])
+                }
+                i++;
+            };
+        }
+        if (window.innerWidth <= 1600 && window.innerWidth > 1010){
+            while (lureArr.length < 4 && this.props.categories) {
+                if (projects[i].category_id === categories[0].id) {
+                    lureArr.push(projects[i])
+                }
+                i++;
+            };
+        }
+        if (window.innerWidth > 1600){
+            while (lureArr.length < 5 && this.props.categories) {
+                if (projects[i].category_id === categories[0].id) {
+                    lureArr.push(projects[i])
+                }
+                i++;
+            };
+        }
         return lureArr
     }
 
@@ -56,12 +75,30 @@ export class ProjectIndex extends React.Component {
         const categories = this.props.categories || {};
         const projects = this.props.projects || {};
         let i = 0;
-        while (poleArr.length < 4 && this.props.categories) {
-            if (projects[i].category_id === categories[1].id) {
-                poleArr.push(projects[i])
-            }
-            i++;
-        };
+        if (window.innerWidth <= 1010) {
+            while (poleArr.length < 3 && this.props.categories) {
+                if (projects[i].category_id === categories[1].id) {
+                    poleArr.push(projects[i])
+                }
+                i++;
+            };
+        }
+        if (window.innerWidth <= 1600 && window.innerWidth > 1010) {
+            while (poleArr.length < 4 && this.props.categories) {
+                if (projects[i].category_id === categories[1].id) {
+                    poleArr.push(projects[i])
+                }
+                i++;
+            };
+        }
+        if (window.innerWidth > 1600) {
+            while (poleArr.length < 5 && this.props.categories) {
+                if (projects[i].category_id === categories[1].id) {
+                    poleArr.push(projects[i])
+                }
+                i++;
+            };
+        }
         return poleArr
     }
     selectUserPosts(){

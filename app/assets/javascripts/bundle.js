@@ -1380,15 +1380,42 @@ function (_React$Component) {
       var projects = this.props.projects;
       var i = 0;
 
-      while (lureArr.length < 4 && this.props.categories) {
-        if (projects[i].category_id === categories[0].id) {
-          lureArr.push(projects[i]);
+      if (window.innerWidth <= 1010) {
+        while (lureArr.length < 3 && this.props.categories) {
+          if (projects[i].category_id === categories[0].id) {
+            lureArr.push(projects[i]);
+          }
+
+          i++;
         }
 
-        i++;
+        ;
       }
 
-      ;
+      if (window.innerWidth <= 1600 && window.innerWidth > 1010) {
+        while (lureArr.length < 4 && this.props.categories) {
+          if (projects[i].category_id === categories[0].id) {
+            lureArr.push(projects[i]);
+          }
+
+          i++;
+        }
+
+        ;
+      }
+
+      if (window.innerWidth > 1600) {
+        while (lureArr.length < 5 && this.props.categories) {
+          if (projects[i].category_id === categories[0].id) {
+            lureArr.push(projects[i]);
+          }
+
+          i++;
+        }
+
+        ;
+      }
+
       return lureArr;
     }
   }, {
@@ -1400,15 +1427,42 @@ function (_React$Component) {
       var projects = this.props.projects || {};
       var i = 0;
 
-      while (poleArr.length < 4 && this.props.categories) {
-        if (projects[i].category_id === categories[1].id) {
-          poleArr.push(projects[i]);
+      if (window.innerWidth <= 1010) {
+        while (poleArr.length < 3 && this.props.categories) {
+          if (projects[i].category_id === categories[1].id) {
+            poleArr.push(projects[i]);
+          }
+
+          i++;
         }
 
-        i++;
+        ;
       }
 
-      ;
+      if (window.innerWidth <= 1600 && window.innerWidth > 1010) {
+        while (poleArr.length < 4 && this.props.categories) {
+          if (projects[i].category_id === categories[1].id) {
+            poleArr.push(projects[i]);
+          }
+
+          i++;
+        }
+
+        ;
+      }
+
+      if (window.innerWidth > 1600) {
+        while (poleArr.length < 5 && this.props.categories) {
+          if (projects[i].category_id === categories[1].id) {
+            poleArr.push(projects[i]);
+          }
+
+          i++;
+        }
+
+        ;
+      }
+
       return poleArr;
     }
   }, {
@@ -42510,7 +42564,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
