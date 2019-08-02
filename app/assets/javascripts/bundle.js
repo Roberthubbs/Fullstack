@@ -645,8 +645,10 @@ function (_React$Component) {
       var projects = this.props.projects;
       if (!category) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category-show-large"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "category-show-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Projects involving: ", category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Projects involving: ", category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-show-grid"
       }, projects.map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -42508,7 +42510,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
