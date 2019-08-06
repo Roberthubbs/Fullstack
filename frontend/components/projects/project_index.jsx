@@ -26,7 +26,7 @@ export class ProjectIndex extends React.Component {
         }
         setTimeout(function () {
             this.setState({ render: true })
-        }.bind(this), 2000)
+        }.bind(this), 1200)
     }
 
     // componentDidUpdate(prevProps, prevState) {
@@ -202,7 +202,7 @@ export class ProjectIndex extends React.Component {
 
                             ))}
                         </div>
-                            <h2 className="index-category-title">Posts By You</h2>
+                            <h2 className="user-category-title">Posts By You</h2>
                         <div className="category-row">
                             
                             {userPosts.map(post=> (

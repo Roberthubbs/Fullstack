@@ -18,7 +18,7 @@ export default (state ={}, action) => {
             // debugger;
             return merge({}, action.projects);
         case RECEIVE_PROJECT:
-           
+        //    debugger;
             return merge({},state,{[action.payload.project.id]: action.payload.project});
         case REMOVE_PROJECT:
              

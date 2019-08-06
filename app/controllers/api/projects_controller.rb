@@ -6,9 +6,11 @@ class Api::ProjectsController < ApplicationController
         if params[:search_string]
             @projects = Project.search_by_title(params[:search_string])
         else
+           
             @projects = Project.all
+            
         end
-        p @projects
+        # p @projects
         render 'api/projects/index'
     end  
 
@@ -21,6 +23,7 @@ class Api::ProjectsController < ApplicationController
 
     def show 
         @project = Project.find(params[:id])
+        @project_author = User.find(@project.author_id)
     end  
 
     def edit 
@@ -55,6 +58,7 @@ class Api::ProjectsController < ApplicationController
         @project = Project.new(project_params)
         
         @project.author_id = current_user.id
+        @project.author = User.find(@project.author_id)
         @project.number_of_likes = 0
         @project.category_id = 0 #delete this 
 

@@ -4,4 +4,4 @@ json.project do
 end
 
 json.extract! @project, :steps
-
+json.extract! @project_author, :username

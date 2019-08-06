@@ -6,6 +6,7 @@ const stepsReducer = (state = {}, action) => {
     Object.freeze(state)
     switch(action.type){
         case RECEIVE_PROJECT: 
+            // debugger;
             return merge({},state, action.payload.steps);
         case RECEIVE_STEP: 
             

@@ -1363,7 +1363,7 @@ function (_React$Component) {
         this.setState({
           render: true
         });
-      }.bind(this), 2000);
+      }.bind(this), 1200);
     } // componentDidUpdate(prevProps, prevState) {
     //     // debugger;
     //     if (prevProps.match.params.query !== this.props.match.params.query) {
@@ -1563,7 +1563,7 @@ function (_React$Component) {
             project: pole
           }));
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "index-category-title"
+          className: "user-category-title"
         }, "Posts By You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "category-row"
         }, userPosts.map(function (post) {
@@ -1736,6 +1736,7 @@ function (_React$Component) {
           description = _this$props$project.description,
           body = _this$props$project.body,
           materials = _this$props$project.materials;
+      var author = this.props.project.author.username;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1752,7 +1753,9 @@ function (_React$Component) {
         className: "link-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
         className: "project-link"
-      }, description)))));
+      }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "project-by"
+      }, "by: ", author, " ")))));
     }
   }]);
 
@@ -1994,7 +1997,8 @@ function (_React$Component) {
         materials: '',
         body: ''
       };
-      var steps = this.props.steps ? this.props.steps : null; // if (!project) return null;
+      var steps = this.props.steps ? this.props.steps : null;
+      var authorname = this.props.authorname; // if (!project) return null;
       // if (!steps) return null;
 
       var description = project.description,
@@ -2010,7 +2014,7 @@ function (_React$Component) {
           className: "project-materials"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "mats"
-        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by: ", authorname)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "project-body"
         }, steps.map(function (step) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2076,11 +2080,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  // debugger
   return {
     projectId: ownProps.match.params.projectId,
     project: state.entities.projects[ownProps.match.params.projectId],
     steps: Object.values(state.entities.steps),
-    current_user: state.session.id
+    current_user: state.session.id,
+    authorname: state.entities.users.authorname
   };
 };
 
@@ -2955,6 +2961,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, action.projects);
 
     case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+      //    debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, _defineProperty({}, action.payload.project.id, action.payload.project));
 
     case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
@@ -3103,6 +3110,7 @@ var stepsReducer = function stepsReducer() {
 
   switch (action.type) {
     case _actions_project_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+      // debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, action.payload.steps);
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_STEP"]:
@@ -3129,7 +3137,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_project_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/project_action */ "./frontend/actions/project_action.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3142,6 +3152,11 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_project_action__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_PROJECT"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, {
+        authorname: action.payload.username
+      });
 
     default:
       return state;

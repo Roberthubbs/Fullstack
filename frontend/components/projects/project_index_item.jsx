@@ -6,8 +6,8 @@ class ProjectItem extends React.Component {
    
     render() {
         
-        const { description, body, materials } = this.props.project;
-        
+        const { description, body, materials, } = this.props.project;
+        const author = this.props.project.author.username
         return (
             <div>
             <div className="project-items">
@@ -16,6 +16,7 @@ class ProjectItem extends React.Component {
                     <img className="lead-project-photo" src={this.props.project.photo} />
                     <div className="link-div">
                         <h6 className="project-link">{description}</h6>
+                        <h6 className="project-by">by: {author} </h6>
                     </div>
                 </Link>
             

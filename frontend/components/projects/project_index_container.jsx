@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
     
         categories: Object.values(state.entities.categories),
         projects: Object.values(state.entities.projects),
-        currentUser: state.session.id || null
+        currentUser: state.session.id || null,
+        
     }
 };
 

@@ -25,10 +25,10 @@ class ProjectShow extends React.Component {
         
         const project = this.props.project ? this.props.project : {description: '', materials: '', body: ''};
         const steps = this.props.steps ? this.props.steps : null;
+        const authorname = this.props.authorname
         // if (!project) return null;
         // if (!steps) return null;
-        const { description, materials, body } = project;
-
+        const { description, materials, body} = project;
         
         if (project.author_id !== this.props.current_user){
         return (
@@ -38,6 +38,7 @@ class ProjectShow extends React.Component {
                 <div className="project-materials">
                     <h2 className="mats">What you'll need</h2>
                     <h2>{materials}</h2>
+                    <h2>by: {authorname}</h2>
                 </div>
                 <ul className="project-body">
                 {steps.map(step =>(
