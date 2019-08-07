@@ -1935,6 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1956,6 +1958,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ProjectShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1968,26 +1972,62 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props));
     _this.state = {
-      projectId: _this.props.projectId
+      projectId: _this.props.projectId,
+      numLikes: 0,
+      clicked: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.IncrementItem = _this.IncrementItem.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProjectShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.fetchProject(this.props.match.params.projectId);
+      setTimeout(function () {
+        _this2.setState({
+          numLikes: _this2.props.project.number_of_likes
+        }), 200;
+      });
     }
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       e.preventDefault();
       this.props.deleteProject(this.state.projectId).then(function () {
-        return _this2.props.history.push("/");
+        return _this3.props.history.push("/");
       });
+    }
+  }, {
+    key: "IncrementItem",
+    value: function IncrementItem() {
+      if (this.state.clicked === false) {
+        this.setState({
+          numLikes: this.state.numLikes + 1
+        });
+        this.setState({
+          clicked: true
+        });
+      } else if (this.state.clicked === true) {
+        this.setState({
+          numLikes: this.state.numLikes - 1
+        });
+        this.setState({
+          clicked: false
+        });
+      }
+
+      ;
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.props.project.number_of_likes;
     }
   }, {
     key: "render",
@@ -2014,7 +2054,15 @@ function (_React$Component) {
           className: "project-materials"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "mats"
-        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by: ", authorname)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by: ", authorname)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "likesCounter"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "hide-button",
+          onClick: this.IncrementItem
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.state.numLikes, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faHeart"],
+          className: "heart"
+        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "project-body"
         }, steps.map(function (step) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2034,7 +2082,18 @@ function (_React$Component) {
           className: "project-materials"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "mats"
-        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        }, "What you'll need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, materials)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "likesCounter"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "center-likes"
+        }, project.number_of_likes, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faHeart"],
+          className: "heart"
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-link"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(project.id, "/steps")
+        }, "Add Another Step")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "project-body"
         }, steps.map(function (step) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2044,11 +2103,7 @@ function (_React$Component) {
           }, step.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "step-body"
           }, step.body));
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "add-step-link"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/projects/".concat(project.id, "/steps")
-        }, "Add Another Step")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "delete-button",
           onClick: this.handleClick
         }, "Delete Project")));
@@ -2097,6 +2152,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteProject: function deleteProject(id) {
       return dispatch(Object(_actions_project_action__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(id));
+    },
+    updateLikes: function updateLikes(likes) {
+      return dispatch(Object(_actions_project_action__WEBPACK_IMPORTED_MODULE_2__["updateProject"])(id));
     }
   };
 };
@@ -3218,7 +3276,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
@@ -3255,7 +3313,7 @@ var fetchCategory = function fetchCategory(categoryId) {
 /*!*******************************************!*\
   !*** ./frontend/util/project_api_util.js ***!
   \*******************************************/
-/*! exports provided: fetchProject, fetchProjects, fetchSearchProjects, createProject, updateProject, deleteProject */
+/*! exports provided: fetchProject, fetchProjects, fetchSearchProjects, createProject, updateLikes, updateProject, deleteProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3264,6 +3322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearchProjects", function() { return fetchSearchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateLikes", function() { return updateLikes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
 var fetchProject = function fetchProject(id) {
@@ -3297,6 +3356,13 @@ var createProject = function createProject(payload) {
     data: {
       project: payload
     }
+  });
+};
+var updateLikes = function updateLikes(like) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/projects/".concat(id),
+    data: like
   });
 };
 var updateProject = function updateProject(formData) {

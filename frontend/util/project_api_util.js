@@ -37,6 +37,14 @@ export const createProject = (payload) => (
     })
 );
 
+export const updateLikes = (like) => (
+    $.ajax({
+        method: 'PATCH',
+        url: `api/projects/${id}`,
+        data: like
+    })
+);
+
 
 export const updateProject = (formData) => {
    
