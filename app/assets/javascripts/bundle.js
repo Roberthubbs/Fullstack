@@ -560,7 +560,15 @@ function (_React$Component) {
       var categories = this.props.categories;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-index-item-list"
-      }, categories.map(function (category) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "catI"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "swimming-background",
+        src: "movingFish.gif",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "over-image-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Categories")), categories.map(function (category) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "category-index-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -673,7 +681,17 @@ function (_React$Component) {
       if (!category) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category-show-large"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, category.name === 'Lures' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "catbackimg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "proj-back-img",
+        src: "GiantLureForBackground.jpg"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "catbackimg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "proj-back-img",
+        src: "fishingPoleBack.jpg"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "category-show-title"
       }, "Projects involving: ", category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-show-grid"
@@ -42672,7 +42690,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

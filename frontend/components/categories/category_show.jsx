@@ -17,6 +17,16 @@ class CategoryShow extends React.Component {
         
         return (
             <div className="category-show-large">
+            {(category.name === 'Lures') ?
+                
+                <div className="catbackimg">
+                    <img className="proj-back-img" src="GiantLureForBackground.jpg"/>
+                </div> : 
+                <div className="catbackimg">
+                    <img className="proj-back-img" src="fishingPoleBack.jpg" />
+                </div>  
+
+            }
             <h2 className="category-show-title">Projects involving: {category.name}</h2>
             <div className="item-show-grid"> 
             {projects.map(project => (
