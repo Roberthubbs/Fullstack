@@ -416,7 +416,7 @@
     margin-right: 5px;
 }
 .logo-larger{
-    width: 100px;
+    width: 120px;
     height: 140px;
     margin-top: 10px;
     margin-left: 10px;
@@ -1049,3 +1049,9 @@
     text-align: center;
 }
 
+.footer-bar{
+    width: 90%;
+    justify-content: center;
+    padding-bottom: 10px;
+    border-bottom: white 1px solid;
+}
