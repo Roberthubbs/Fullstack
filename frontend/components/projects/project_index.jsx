@@ -168,7 +168,7 @@ export class ProjectIndex extends React.Component {
                 
                 <div className="item-grid">
                     <div className="category-comp">
-                        <h2 className="featured-title">Todays Featured Fishables</h2>
+                        <h2 className="featured-title">Explore Fishables</h2>
                             <Link to={`/categories/${this.props.categories[0].id}`} className="index-category-title">Lures</Link>
                         <div className="category-row">
                             {/* <h2 className="index-category-title">Lures:</h2> */}
@@ -274,7 +274,7 @@ export class ProjectIndex extends React.Component {
            </div> */}
             <div className="item-grid">
                 <div className="category-comp">
-                    <h2 className="featured-title">Todays Featured Fishables</h2>
+                    <h2 className="featured-title">Explore Fishables</h2>
                         <Link to={`/categories/${this.props.categories[0].id}`} className="index-category-title">Lures</Link>
                     <div className="category-row">
                         {/* <h2 className="index-category-title">Lures:</h2> */}

@@ -115,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_projects_loading_proj_form__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/projects/loading_proj_form */ "./frontend/components/projects/loading_proj_form.jsx");
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 
 
 
@@ -133,6 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_18__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_15__["faSearch"]);
+
 
 
 
@@ -207,10 +209,35 @@ var App = function App() {
     component: _components_projects_project_search_container__WEBPACK_IMPORTED_MODULE_14__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "perm-bottom-border"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "footer-bar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "fishablesIcon.png",
     className: "logo-larger"
-  }))));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "about-me-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "about-me-title"
+  }, "about me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "about-me-link",
+    href: "https://roberthubbs.github.io/Portfolio/"
+  }, "Portfolio")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "github-link"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "git-link-title"
+  }, "find me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/Roberthubbs/Fullstack"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "git-log",
+    src: "GithubLogo.png",
+    alt: ""
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/robert-hubert-aa9412170"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "linked-log",
+    src: "linkedInLogo.png",
+    alt: ""
+  }))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -1538,7 +1565,7 @@ function (_React$Component) {
           className: "category-comp"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "featured-title"
-        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        }, "Explore Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/categories/".concat(this.props.categories[0].id),
           className: "index-category-title"
         }, "Lures"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1608,7 +1635,7 @@ function (_React$Component) {
           className: "category-comp"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "featured-title"
-        }, "Todays Featured Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        }, "Explore Fishables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/categories/".concat(this.props.categories[0].id),
           className: "index-category-title"
         }, "Lures"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

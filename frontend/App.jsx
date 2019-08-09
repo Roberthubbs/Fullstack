@@ -16,6 +16,7 @@ import SearchContainer from './components/search/search_container';
 import ProjectSearchContainer from './components/projects/project_search_container';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch)
+
 import {
     Route, 
     Redirect,
@@ -25,6 +26,7 @@ import {
 } from 'react-router-dom';
 import LoadingProjectForm from './components/projects/loading_proj_form';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const App = () => (
     <div>
@@ -59,8 +61,22 @@ const App = () => (
             <Route exact path="/search/:query" component={ProjectSearchContainer}  />
         </Switch>
         <div className="perm-bottom-border">
-       <footer >
+       <footer className="footer-bar">
             <img src="fishablesIcon.png" className="logo-larger" />
+            <div className="about-me-div">
+                <h4 className="about-me-title">about me</h4>
+                <a className="about-me-link"href="https://roberthubbs.github.io/Portfolio/">Portfolio</a>
+            </div>
+            <div className="github-link">
+                    <h4 className="git-link-title">find me</h4>
+                <a href="https://github.com/Roberthubbs/Fullstack">
+                    <img className="git-log" src="GithubLogo.png" alt=""/>
+                </a>
+                <a href="https://www.linkedin.com/in/robert-hubert-aa9412170">
+                    <img className="linked-log" src="linkedInLogo.png" alt=""/>
+                </a>
+
+            </div>
        </footer>
         </div> 
     </div>
