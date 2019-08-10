@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
+import {withRouter} from 'react-router-dom';
 class ProjectShow extends React.Component {
     constructor(props){
         super(props)
@@ -20,13 +20,18 @@ class ProjectShow extends React.Component {
         this.props.fetchProject(this.props.match.params.projectId)
         setTimeout(() => {
 
-            this.setState({ numLikes: this.props.project.number_of_likes}), 200
+            this.setState({ numLikes: this.props.project.number_of_likes || 0}), 200
         });
     }
     
     handleClick(e){
         e.preventDefault();
-        this.props.deleteProject(this.state.projectId).then(() => this.props.history.push("/"))
+        const that = this;
+        debugger;
+        
+        this.props.deleteProject(this.state.projectId).then(() => {
+            that.props.history.push("/")
+        });
     };
     
     IncrementItem(){
@@ -38,9 +43,9 @@ class ProjectShow extends React.Component {
             this.setState({ clicked: false })
         };
     }
-    componentDidUpdate(){
-        this.props.project.number_of_likes
-    }
+    // componentDidUpdate(){
+    //     this.props.project.number_of_likes
+    // }
     
     render() {
         
@@ -114,4 +119,4 @@ class ProjectShow extends React.Component {
     }
 }
 
-export default ProjectShow;
+export default withRouter(ProjectShow);

@@ -1786,11 +1786,7 @@ function (_React$Component) {
         className: "project-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "item-link",
-        to: {
-          pathname: "/projects/".concat(this.props.project.id),
-          search: "?sort=name",
-          hash: "#the-hash"
-        }
+        to: "/projects/".concat(this.props.project.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "lead-project-photo",
         src: this.props.project.photo
@@ -2005,6 +2001,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProjectShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2034,18 +2031,18 @@ function (_React$Component) {
       this.props.fetchProject(this.props.match.params.projectId);
       setTimeout(function () {
         _this2.setState({
-          numLikes: _this2.props.project.number_of_likes
+          numLikes: _this2.props.project.number_of_likes || 0
         }), 200;
       });
     }
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this3 = this;
-
       e.preventDefault();
+      var that = this;
+      debugger;
       this.props.deleteProject(this.state.projectId).then(function () {
-        return _this3.props.history.push("/");
+        that.props.history.push("/");
       });
     }
   }, {
@@ -2068,12 +2065,10 @@ function (_React$Component) {
       }
 
       ;
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.props.project.number_of_likes;
-    }
+    } // componentDidUpdate(){
+    //     this.props.project.number_of_likes
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -2159,7 +2154,7 @@ function (_React$Component) {
   return ProjectShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectShow);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProjectShow));
 
 /***/ }),
 
@@ -3321,7 +3316,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);

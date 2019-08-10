@@ -22,6 +22,7 @@ class NewProjectForm extends React.Component {
         e.preventDefault();
         
         let that = this;
+        
         this.props.createProject(this.state).then((project) => {
             that.props.history.push(`/projects/${project.payload.project.id}/edit`)
             }

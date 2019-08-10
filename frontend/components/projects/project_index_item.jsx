@@ -11,8 +11,7 @@ class ProjectItem extends React.Component {
         return (
             <div>
             <div className="project-items">
-                    <Link className="item-link" to={{pathname:`/projects/${this.props.project.id}`, search: "?sort=name",
-        hash: "#the-hash"}}>
+                    <Link className="item-link" to={`/projects/${this.props.project.id}`}>
                     <img className="lead-project-photo" src={this.props.project.photo} />
                     <div className="link-div">
                         <h6 className="project-link">{description}</h6>
