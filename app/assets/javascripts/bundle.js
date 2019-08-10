@@ -1938,7 +1938,7 @@ function (_React$Component) {
       }
 
       if (this.props.projects.length === 0) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "featured-title"
+        className: "cant-find"
       }, "Sorry, nothing matched that search!"));
       var projects = this.props.projects;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

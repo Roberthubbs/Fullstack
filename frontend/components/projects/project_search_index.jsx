@@ -52,7 +52,7 @@ export class ProjectSearchIndex extends React.Component {
        
         if (this.props.projects.length === 0) return(
             <div>
-                <h2 className="featured-title">Sorry, nothing matched that search!</h2>
+                <h2 className="cant-find">Sorry, nothing matched that search!</h2>
             </div>
         );
         let projects = this.props.projects;
